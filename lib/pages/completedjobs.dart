@@ -27,9 +27,7 @@ class CompletedJobs extends StatefulWidget {
 class _CompletedJobsState extends State<CompletedJobs> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     getMyCompletedJobs();
   }
 

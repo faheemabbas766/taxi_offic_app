@@ -36,7 +36,7 @@ class _TripDetailsState extends State<TripDetails> {
     await Provider.of<TripDetailsPro>(context, listen: false)
         .polylinePoints
         .getRouteBetweenCoordinates(
-      'AIzaSyD7nCnza24yu8qP2q5B0o7y0Qg54oUdNE4&libraries=places&callback=initializeMaps',
+      'AIzaSyD7nCnza24yu8qP2q5B0o7y0Qg54oUdNE4',
       PointLatLng(
         Provider.of<TripDetailsPro>(context, listen: false).plat!,
         Provider.of<TripDetailsPro>(context, listen: false).plong!,
@@ -164,7 +164,7 @@ class _TripDetailsState extends State<TripDetails> {
                           pickupLatitude!,
                           pickupLongitude!,
                         ),
-                        zoom: 15,
+                        zoom: 6,
                       ),
                       mapType: MapType.normal,
                       zoomControlsEnabled: true,
@@ -186,7 +186,7 @@ class _TripDetailsState extends State<TripDetails> {
                             destinationLatitude!,
                             destinationLongitude!,
                           ),
-                          icon: BitmapDescriptor.defaultMarker,
+                          icon: BitmapDescriptor.defaultMarkerWithHue(3),
                         ),
                       },
                       polylines: <Polyline>{

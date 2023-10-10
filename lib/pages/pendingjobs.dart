@@ -557,9 +557,8 @@ class _PendingJobsState extends State<PendingJobs> {
                                             mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
                                               Text(
-                                                "  " + Provider.of<PendingJobsPro>(context, listen: false).jobs[index].paymentmethod.toString() + "  ",
+                                                "  ${Provider.of<PendingJobsPro>(context, listen: false).jobs[index].paymentmethod}  ",
                                                 style: TextStyle(
-                                                  // color: Colors.white,
                                                   fontSize: RouteManager.width / 20,
                                                 ),
                                               ),
@@ -574,7 +573,7 @@ class _PendingJobsState extends State<PendingJobs> {
                                             children: [
                                               // SizedBox(height: RouteManager.width / 30),
                                               Text(
-                                                Provider.of<PendingJobsPro>(context).jobs[index].total_amount.toString() + " \$",
+                                                "${Provider.of<PendingJobsPro>(context).jobs[index].total_amount} \$",
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: const Color.fromARGB(255, 47, 150, 44),
