@@ -104,7 +104,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ShowDialogScreen()),
+                  MaterialPageRoute(builder: (context) => ShowDialogScreen()),
                 );
               },
               child: Column(

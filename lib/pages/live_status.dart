@@ -6,7 +6,7 @@ import '../Api & Routes/routes.dart';
 import '../providers/currentjobspro.dart';
 import 'home.dart';
 class ShowDialogScreen extends StatefulWidget {
-  ShowDialogScreen({super.key});
+  const ShowDialogScreen({super.key});
 
   @override
   State<ShowDialogScreen> createState() => _ShowDialogScreenState();
