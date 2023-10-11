@@ -22,8 +22,10 @@ class _CurrentJobsState extends State<CurrentJobs> {
   }
   Future<void> fetchData() async {
     await getMyCurrentJobs();
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ShowDialogScreen()));
-  }
+    if( !Provider.of<CurrentJobsPro>(context, listen: false).jobs.isEmpty){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ShowDialogScreen()));
+    }
+}
   Future<void> getMyCurrentJobs() async {
     if (mounted) {
       while (true) {

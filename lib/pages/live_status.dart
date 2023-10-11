@@ -13,16 +13,28 @@ class ShowDialogScreen extends StatefulWidget {
 }
 
 class _ShowDialogScreenState extends State<ShowDialogScreen> {
+  dynamic list;
   int index = 0;
+  bool isLoading = false;
+  Future<void> fetchData() async {
+    var fetchedList = await API.getJobDetails(
+        Provider.of<CurrentJobsPro>(context, listen: false).jobs[index].bookid.toString(), context);
+    setState(() {
+      list = fetchedList;
+    });
+  }
+
+
   @override
   void initState() {
     super.initState();
+    fetchData();
   }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child:Scaffold(
-          body: Container(
+          body:Container(
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
@@ -137,7 +149,7 @@ class _ShowDialogScreenState extends State<ShowDialogScreen> {
                                 width: RouteManager.width / 1.5,
                                 height: 280,
                                 child: ListView.builder(
-                                  itemCount: list.length,
+                                  itemCount: Provider.of<CurrentJobsPro>(context).jobs.length ?? 0,
                                   itemBuilder: (context, index) {
                                     Map<String, dynamic> destination =
                                     list[index];
@@ -334,11 +346,16 @@ class _ShowDialogScreenState extends State<ShowDialogScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      ElevatedButton(
+                      isLoading? const CircularProgressIndicator()
+                          :ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFFFFB900),
                         ),
                         onPressed: () {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          print(Provider.of<CurrentJobsPro>(context, listen: false).jobs[index].status);
                           int mapStatus(int currentStatus) {
                             if (currentStatus == 2) {
                               return 11;
@@ -350,40 +367,22 @@ class _ShowDialogScreenState extends State<ShowDialogScreen> {
                               return currentStatus; // Return the same status if none of the conditions match
                             }
                           }
-
-                          API.showLoading("", context);
                           API.respondToBooking(
-                            Provider.of<CurrentJobsPro>(context, listen: false)
-                                .jobs[index]
-                                .bookid,
-                            mapStatus(Provider.of<CurrentJobsPro>(context,
-                                listen: false)
-                                .jobs[index]
-                                .status),
-                            context,
-                          ).then(
+                              Provider.of<CurrentJobsPro>(context, listen: false).jobs[index].bookid,
+                              mapStatus(Provider.of<CurrentJobsPro>(context, listen: false).jobs[index].status) ,
+                              context).then(
                                 (value) async {
                               if (value) {
-                                if (Provider.of<CurrentJobsPro>(context,
-                                    listen: false)
-                                    .jobs[index]
-                                    .status ==
-                                    9) {
-                                  Provider.of<CurrentJobsPro>(context,
-                                      listen: false)
-                                      .jobs
-                                      .removeAt(index);
+                                if(Provider.of<CurrentJobsPro>(context, listen: false).jobs[index].status==9){
+                                  Provider.of<CurrentJobsPro>(context, listen: false).jobs.removeAt(index);
                                 }
-                                Provider.of<CurrentJobsPro>(context,
-                                    listen: false)
-                                    .notifyListenerz();
+                                Provider.of<CurrentJobsPro>(context, listen: false).notifyListenerz();
+                                Provider.of<CurrentJobsPro>(context, listen: false).notifyListenerz();
                               }
-                              Provider.of<CurrentJobsPro>(context,
-                                  listen: false)
-                                  .notifyListenerz();
-                              Provider.of<CurrentJobsPro>(context,
-                                  listen: false)
-                                  .notifyListenerz();
+                              await fetchData();
+                              setState(() {
+                                isLoading = false;
+                              });
                             },
                           );
                         },

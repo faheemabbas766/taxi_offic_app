@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
     RouteManager.context = context;
     // if (Provider.of<HomePro>(context, listen: false).timer == null) {
     Provider.of<HomePro>(context, listen: false).timer = Timer.periodic(
-      const Duration(seconds: 5),
+      const Duration(seconds: 1),
           (Timer t) async {
         print(
             "POST LOCATION IS:::::::::::::::::::::::::::::::::::::::::::${API.postlocation}");
