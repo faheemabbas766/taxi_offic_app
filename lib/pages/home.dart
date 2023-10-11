@@ -9,7 +9,11 @@ import '../Api & Routes/routes.dart';
 import '../providers/homepro.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../providers/themepro.dart';
+
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -19,9 +23,8 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     RouteManager.context = context;
-    // if (Provider.of<HomePro>(context, listen: false).timer == null) {
     Provider.of<HomePro>(context, listen: false).timer = Timer.periodic(
-      const Duration(seconds: 1),
+      const Duration(seconds: 5),
           (Timer t) async {
         print(
             "POST LOCATION IS:::::::::::::::::::::::::::::::::::::::::::${API.postlocation}");
@@ -40,11 +43,11 @@ class _HomeState extends State<Home> {
             context: RouteManager.context!,
             builder: (cont) {
               return Dialog(
-                backgroundColor: Colors.white,
+                backgroundColor: AppColors.of(context).primaryColor,
                 child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(
+                  decoration: BoxDecoration(
+                    color: AppColors.of(context).primaryColor,
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(20),
                     ),
                   ),
@@ -79,9 +82,9 @@ class _HomeState extends State<Home> {
                                   Container(
                                     width: RouteManager.width / 8,
                                     height: RouteManager.width / 8,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.of(context).primaryColor,
+                                      borderRadius: const BorderRadius.all(
                                         Radius.circular(30),
                                       ),
                                     ),
@@ -101,16 +104,16 @@ class _HomeState extends State<Home> {
                                         "Name",
                                         //"${jsonDecode(message.data['Customer_Detail'])["CUS_NAME"]}",
                                         style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontSize: RouteManager.width / 22,
                                         ),
                                       ),
                                       const SizedBox(height: 4),
-                                      Text(
+                                      const Text(
                                         "date",
                                         //"${DateFormat('yyyy-MM-dd').format(DateTime.parse(jsonDecode(message.data['booking_detail'])["BM_DATE"]))}\n${DateFormat('HH:mm:ss').format(DateTime.parse(jsonDecode(message.data['booking_detail'])["BM_DATE"]))}",
                                         textAlign: TextAlign.left,
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           color: Colors.grey,
                                           fontSize: 14,
                                         ),
@@ -177,18 +180,18 @@ class _HomeState extends State<Home> {
                                           if (isFirstStop) {
                                             title = "Pick Up";
 
-                                            stopColor = Colors.black;
+                                            stopColor = AppColors.of(context).secondaryColor;
                                             navigationColor = Colors.green;
                                             // Set the navigation button color for the first stop
                                           } else if (isLastStop) {
                                             title = "Destination";
-                                            stopColor = Colors.black;
+                                            stopColor = AppColors.of(context).secondaryColor;
                                             navigationColor = Colors
                                                 .red; // Set the navigation button color for the last stop
                                           } else {
                                             title = "Stop $index";
-                                            stopColor = Colors.black;
-                                            navigationColor = Color(0xff0038FF);
+                                            stopColor = AppColors.of(context).secondaryColor;
+                                            navigationColor = const Color(0xff0038FF);
                                             // Set the navigation button color for intermediate stops
                                           }
                                           return ListTile(
@@ -273,14 +276,14 @@ class _HomeState extends State<Home> {
                                     Text(
                                       "Passengers  ",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontWeight: FontWeight.bold,
                                           fontSize: RouteManager.width / 25),
                                     ),
                                     Text("pessenger",
                                         // jsonDecode(message.data['booking_detail'])["BM_PASSENGER"].toString(),
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            color: AppColors.of(context).secondaryColor,
                                             fontSize: RouteManager.width / 27),
                                         maxLines: 2),
                                   ],
@@ -293,7 +296,7 @@ class _HomeState extends State<Home> {
                                     Text(
                                       "Luggage  ",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontWeight: FontWeight.bold,
                                           fontSize: RouteManager.width / 25),
                                     ),
@@ -301,7 +304,7 @@ class _HomeState extends State<Home> {
                                       'Lugge',
                                       // jsonDecode(message.data['booking_detail'])["BM_M_LUGGAE"].toString(),
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontSize: RouteManager.width / 27),
                                       maxLines: 2,
                                     ),
@@ -315,7 +318,7 @@ class _HomeState extends State<Home> {
                                     Text(
                                       "Payment Method  ",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontWeight: FontWeight.bold,
                                           fontSize: RouteManager.width / 25),
                                     ),
@@ -329,7 +332,7 @@ class _HomeState extends State<Home> {
                                       //     ? "Card"
                                       //     : "Account",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontSize: RouteManager.width / 27),
                                       maxLines: 2,
                                     ),
@@ -343,7 +346,7 @@ class _HomeState extends State<Home> {
                                     Text(
                                       "Total Amount  ",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontWeight: FontWeight.bold,
                                           fontSize: RouteManager.width / 25),
                                     ),
@@ -351,7 +354,7 @@ class _HomeState extends State<Home> {
                                       'total amount',
                                       // "${jsonDecode(message.data['booking_detail'])["total_amount"].toString()} £",
                                       style: TextStyle(
-                                          color: Colors.black,
+                                          color: AppColors.of(context).secondaryColor,
                                           fontSize: RouteManager.width / 27),
                                       maxLines: 2,
                                     ),
@@ -443,8 +446,6 @@ class _HomeState extends State<Home> {
             HomePro.notificationpayload = "";
           });
         });
-        // HomePro.notificationpayload = "";
-        // }
       }
     }
   }
@@ -458,7 +459,7 @@ class _HomeState extends State<Home> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: RouteManager.appclr,
+          backgroundColor: AppColors.of(context).primaryColor,
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -500,7 +501,7 @@ class _HomeState extends State<Home> {
                                   Provider.of<HomePro>(context).username,
                                   style: TextStyle(
                                     fontSize: RouteManager.width / 14,
-                                    color: const Color(0xFFFFFFFF),
+                                    color: AppColors.of(context).secondaryColor,
                                     fontWeight: FontWeight.w700,
                                     fontFamily: 'myfonts',
                                   ),
@@ -508,24 +509,24 @@ class _HomeState extends State<Home> {
                                 const SizedBox(
                                   width: 160,
                                 ),
-                                const Icon(
+                                Icon(
                                   Icons.notifications,
-                                  color: Colors.white,
+                                  color: AppColors.of(context).secondaryColor,
                                 ),
                               ],
                             ),
                             const SizedBox(
                               height: 20,
                             ),
-                            const Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 26),
+                                  padding: const EdgeInsets.symmetric(horizontal: 26),
                                   child: Text(
                                     '£21,937.32',
                                     style: TextStyle(
-                                      color: Color(0xffffffff),
+                                      color: AppColors.of(context).secondaryColor,
                                       fontSize: 25, //31.62
                                       fontWeight: FontWeight.w700,
                                     ),
@@ -543,8 +544,7 @@ class _HomeState extends State<Home> {
                   height: RouteManager.width / 10,
                 ),
                 Center(
-                  child: Container(
-                    // color:Colors.red,
+                  child: SizedBox(
                     height: RouteManager.width / 1.06,
                     width: RouteManager.width / 1.06,
                     child: SingleChildScrollView(
@@ -569,8 +569,8 @@ class _HomeState extends State<Home> {
                                         child: SizedBox(
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
-                                          child: const Card(
-                                            color: Colors.white,
+                                          child: Card(
+                                            color: AppColors.of(context).primaryDimColor,
                                           ),
                                         ),
                                       ),
@@ -598,7 +598,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           "Shift"
                                               .text
-                                              .color(Colors.black)
+                                              .color(AppColors.of(context).secondaryColor)
                                               .size(14)
                                               .align(TextAlign.center)
                                               .fontWeight(FontWeight.w700)
@@ -624,8 +624,8 @@ class _HomeState extends State<Home> {
                                         child: SizedBox(
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
-                                          child: const Card(
-                                            color: Colors.white,
+                                          child: Card(
+                                            color: AppColors.of(context).primaryDimColor,
                                           ),
                                         ),
                                       ),
@@ -653,7 +653,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           "Job View"
                                               .text
-                                              .color(Colors.black)
+                                              .color(AppColors.of(context).secondaryColor)
                                               .size(14)
                                               .align(TextAlign.center)
                                               .fontWeight(FontWeight.w700)
@@ -676,8 +676,8 @@ class _HomeState extends State<Home> {
                                         child: SizedBox(
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
-                                          child: const Card(
-                                            color: Colors.white,
+                                          child: Card(
+                                            color: AppColors.of(context).primaryDimColor,
                                           ),
                                         ),
                                       ),
@@ -705,7 +705,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           "Zones"
                                               .text
-                                              .color(Colors.black)
+                                              .color(AppColors.of(context).secondaryColor)
                                               .size(14)
                                               .align(TextAlign.center)
                                               .fontWeight(FontWeight.w700)
@@ -731,8 +731,8 @@ class _HomeState extends State<Home> {
                                       child: SizedBox(
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
-                                        child: const Card(
-                                          color: Colors.white,
+                                        child: Card(
+                                          color: AppColors.of(context).primaryDimColor,
                                         ),
                                       ),
                                     ),
@@ -760,7 +760,7 @@ class _HomeState extends State<Home> {
                                         ),
                                         "Shift History"
                                             .text
-                                            .color(Colors.black)
+                                            .color(AppColors.of(context).secondaryColor)
                                             .size(14)
                                             .align(TextAlign.center)
                                             .fontWeight(FontWeight.w700)
@@ -780,8 +780,8 @@ class _HomeState extends State<Home> {
                                       child: SizedBox(
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
-                                        child: const Card(
-                                          color: Colors.white,
+                                        child:  Card(
+                                          color: AppColors.of(context).primaryDimColor,
                                         ),
                                       ),
                                     ),
@@ -809,7 +809,7 @@ class _HomeState extends State<Home> {
                                         ),
                                         "Transactions"
                                             .text
-                                            .color(Colors.black)
+                                            .color(AppColors.of(context).secondaryColor)
                                             .size(14)
                                             .align(TextAlign.center)
                                             .fontWeight(FontWeight.w700)
@@ -829,8 +829,8 @@ class _HomeState extends State<Home> {
                                       child: SizedBox(
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
-                                        child: const Card(
-                                          color: Colors.white,
+                                        child:  Card(
+                                          color: AppColors.of(context).primaryDimColor,
                                         ),
                                       ),
                                     ),
@@ -858,7 +858,7 @@ class _HomeState extends State<Home> {
                                         ),
                                         "Settings"
                                             .text
-                                            .color(Colors.black)
+                                            .color(AppColors.of(context).secondaryColor)
                                             .size(14)
                                             .align(TextAlign.center)
                                             .fontWeight(FontWeight.w700)
@@ -888,8 +888,8 @@ class _HomeState extends State<Home> {
                                         child: SizedBox(
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
-                                          child: const Card(
-                                            color: Colors.white,
+                                          child: Card(
+                                            color: AppColors.of(context).primaryDimColor,
                                           ),
                                         ),
                                       ),
@@ -913,7 +913,6 @@ class _HomeState extends State<Home> {
                                                 height: 35,
                                                 width: 35,
                                               ),
-                                              // Icon(Icon, color: Colors.white, size: RouteManager.width / 5),
                                             ],
                                           ),
                                           SizedBox(
@@ -921,7 +920,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           "Book Now"
                                               .text
-                                              .color(Colors.black)
+                                              .color(AppColors.of(context).secondaryColor)
                                               .size(14)
                                               .align(TextAlign.center)
                                               .fontWeight(FontWeight.w700)
@@ -942,8 +941,8 @@ class _HomeState extends State<Home> {
                                       child: SizedBox(
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
-                                        child: const Card(
-                                          color: Colors.white,
+                                        child:  Card(
+                                          color: AppColors.of(context).primaryDimColor,
                                         ),
                                       ),
                                     ),
@@ -971,7 +970,7 @@ class _HomeState extends State<Home> {
                                         ),
                                         "App video"
                                             .text
-                                            .color(Colors.black)
+                                            .color(AppColors.of(context).secondaryColor)
                                             .size(14)
                                             .align(TextAlign.center)
                                             .fontWeight(FontWeight.w700)
@@ -987,11 +986,11 @@ class _HomeState extends State<Home> {
                                       context: context,
                                       builder: (cont) {
                                         return AlertDialog(
-                                          backgroundColor: Colors.white,
+                                          backgroundColor:AppColors.of(context).primaryDimColor,
                                           content: Container(
                                             width: RouteManager.width,
                                             height: RouteManager.width / 2.5,
-                                            color: Colors.white,
+                                            color: AppColors.of(context).primaryDimColor,
                                             child: Column(
                                               mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -1001,7 +1000,7 @@ class _HomeState extends State<Home> {
                                                   style: TextStyle(
                                                     fontSize:
                                                     RouteManager.width / 18,
-                                                    color: Colors.black,
+                                                    color: AppColors.of(context).secondaryColor,
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
@@ -1013,7 +1012,7 @@ class _HomeState extends State<Home> {
                                                   style: TextStyle(
                                                     fontSize:
                                                     RouteManager.width / 20,
-                                                    color: Colors.black,
+                                                    color: AppColors.of(context).secondaryColor,
                                                   ),
                                                 ),
                                                 SizedBox(
@@ -1027,7 +1026,7 @@ class _HomeState extends State<Home> {
                                                       style: ElevatedButton
                                                           .styleFrom(
                                                         backgroundColor:
-                                                        Color.fromARGB(255,
+                                                        const Color.fromARGB(255,
                                                             160, 62, 55),
                                                       ),
                                                       onPressed: () {
@@ -1036,7 +1035,7 @@ class _HomeState extends State<Home> {
                                                             true)
                                                             .pop();
                                                       },
-                                                      child: Container(
+                                                      child: SizedBox(
                                                         height:
                                                         RouteManager.width /
                                                             8,
@@ -1052,7 +1051,7 @@ class _HomeState extends State<Home> {
                                                                   .width /
                                                                   18,
                                                               color:
-                                                              Colors.white,
+                                                              AppColors.of(context).primaryDimColor,
                                                               fontWeight:
                                                               FontWeight
                                                                   .bold,
@@ -1069,7 +1068,7 @@ class _HomeState extends State<Home> {
                                                       style: ElevatedButton
                                                           .styleFrom(
                                                         backgroundColor:
-                                                        Color.fromARGB(255,
+                                                        const Color.fromARGB(255,
                                                             47, 121, 50),
                                                       ),
                                                       onPressed: () {
@@ -1104,7 +1103,7 @@ class _HomeState extends State<Home> {
                                                           }
                                                         });
                                                       },
-                                                      child: Container(
+                                                      child: SizedBox(
                                                         height:
                                                         RouteManager.width /
                                                             8,
@@ -1119,7 +1118,7 @@ class _HomeState extends State<Home> {
                                                                 RouteManager
                                                                     .width /
                                                                     18,
-                                                                color: Colors.white,
+                                                                color: AppColors.of(context).primaryDimColor,
                                                                 fontWeight:
                                                                 FontWeight.bold,
                                                               ),
@@ -1144,8 +1143,8 @@ class _HomeState extends State<Home> {
                                         child: SizedBox(
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
-                                          child: const Card(
-                                            color: Colors.white,
+                                          child:  Card(
+                                            color: AppColors.of(context).primaryDimColor,
                                           ),
                                         ),
                                       ),
@@ -1173,7 +1172,7 @@ class _HomeState extends State<Home> {
                                           ),
                                           "Sign Out"
                                               .text
-                                              .color(Colors.black)
+                                              .color(AppColors.of(context).secondaryColor)
                                               .size(14)
                                               .align(TextAlign.center)
                                               .fontWeight(FontWeight.w700)

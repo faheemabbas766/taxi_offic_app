@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 
 import '../Api & Routes/api.dart';
 import '../Api & Routes/routes.dart';
+import '../providers/bottomnavpro.dart';
 import '../providers/homepro.dart';
 import '../providers/pendingjobspro.dart';
+import '../providers/themepro.dart';
 import 'home.dart';
 
 
@@ -358,7 +360,7 @@ class _PendingJobsState extends State<PendingJobs> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
-                            Color(0xffFFB900)),
+                            Colors.red),
                         onPressed: () {
                           API.showLoading("", cont);
                           API
@@ -390,7 +392,7 @@ class _PendingJobsState extends State<PendingJobs> {
                                 .pop();
                           });
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: RouteManager.width / 5,
                           height:
                           RouteManager.width / 8,
@@ -439,9 +441,12 @@ class _PendingJobsState extends State<PendingJobs> {
                             Navigator.of(cont,
                                 rootNavigator: true)
                                 .pop();
+                            Provider.of<BottomNavigationPro>(context, listen: false).navindex = 0;
+                            Provider.of<BottomNavigationPro>(context, listen: false).notifyListenerz();
+
                           });
                         },
-                        child: Container(
+                        child: SizedBox(
                           width: RouteManager.width / 5,
                           height:
                           RouteManager.width / 8,
@@ -471,7 +476,7 @@ class _PendingJobsState extends State<PendingJobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: RouteManager.appclr,
+      backgroundColor: AppColors.of(context).primaryDimColor,
       body: Provider.of<PendingJobsPro>(context).isloaded
           ? Provider.of<PendingJobsPro>(context).jobs.isEmpty
               ? Center(
@@ -588,7 +593,7 @@ class _PendingJobsState extends State<PendingJobs> {
                                       Column(
                                         children: [
                                           // Container(
-                                          //   color: Colors.black,
+                                          //   color: Theme.of(context).secondaryHeaderColor,
                                           //   height: RouteManager.width / 30,
                                           // ),
                                           Container(
@@ -705,234 +710,6 @@ class _PendingJobsState extends State<PendingJobs> {
                                           ),
                                         ],
                                       ),
-                                      // Column(
-                                      //   children: [
-                                      //     // Container(
-                                      //     //   color: Colors.black,
-                                      //     //   height: RouteManager.width / 30,
-                                      //     // ),
-                                      //     Container(
-                                      //       decoration: BoxDecoration(
-                                      //         color: Color.fromARGB(255, 47, 150, 44),
-                                      //         borderRadius: BorderRadius.only(
-                                      //           topRight: Radius.circular(RouteManager.width / 90),
-                                      //           topLeft: Radius.circular(RouteManager.width / 90),
-                                      //         ),
-                                      //       ),
-                                      //       // width: RouteManager.width,
-
-                                      //       child: Column(
-                                      //         children: [
-                                      //           Row(
-                                      //             mainAxisAlignment: MainAxisAlignment.center,
-                                      //             children: [
-                                      //               SizedBox(width: RouteManager.width / 30),
-                                      //               Text(
-                                      //                 Provider.of<PendingJobsPro>(context).jobs[index].name,
-                                      //                 style: TextStyle(
-                                      //                   fontWeight: FontWeight.w500,
-                                      //                   color: Colors.white,
-                                      //                   fontSize: RouteManager.width / 23,
-                                      //                 ),
-                                      //               ),
-                                      //             ],
-                                      //           ),
-                                      //           SizedBox(
-                                      //             height: RouteManager.width / 30,
-                                      //           ),
-                                      //           Row(
-                                      //             mainAxisAlignment: MainAxisAlignment.center,
-                                      //             children: [
-                                      //               SizedBox(width: RouteManager.width / 30),
-                                      //               Text(
-                                      //                 Provider.of<PendingJobsPro>(context).jobs[index].phn,
-                                      //                 style: TextStyle(
-                                      //                   fontWeight: FontWeight.w500,
-                                      //                   color: Colors.white,
-                                      //                   fontSize: RouteManager.width / 23,
-                                      //                 ),
-                                      //               ),
-                                      //             ],
-                                      //           ),
-                                      //         ],
-                                      //       ),
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 60,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 30),
-                                      //         Icon(
-                                      //           Icons.location_on,
-                                      //           color: Color.fromARGB(255, 123, 247, 127),
-                                      //           size: RouteManager.width / 16,
-                                      //         ),
-                                      //         Text(
-                                      //           "Pick Up : ",
-                                      //           style: TextStyle(
-                                      //             fontWeight: FontWeight.bold,
-                                      //             color: const Color.fromARGB(255, 115, 252, 119),
-                                      //             fontSize: RouteManager.width / 23,
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 40,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 10),
-                                      //         Container(
-                                      //           width: RouteManager.width / 1.3,
-                                      //           child: Text(
-                                      //             Provider.of<PendingJobsPro>(context, listen: false).jobs[index].pickupadress,
-                                      //             style: TextStyle(
-                                      //               // fontWeight: FontWeight.bold,
-                                      //               color: Colors.white,
-                                      //               fontSize: RouteManager.width / 25,
-                                      //             ),
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 40,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 30),
-                                      //         Icon(
-                                      //           Icons.location_on,
-                                      //           color: Color.fromARGB(255, 255, 120, 110),
-                                      //           size: RouteManager.width / 16,
-                                      //         ),
-                                      //         Text(
-                                      //           "Destination : ",
-                                      //           style: TextStyle(
-                                      //             fontWeight: FontWeight.bold,
-                                      //             color: Color.fromARGB(255, 255, 120, 110),
-                                      //             fontSize: RouteManager.width / 23,
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 40,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 10),
-                                      //         Container(
-                                      //           width: RouteManager.width / 1.3,
-                                      //           child: Text(
-                                      //             Provider.of<PendingJobsPro>(context, listen: false).jobs[index].dropaddress,
-                                      //             style: TextStyle(
-                                      //               color: Colors.white,
-                                      //               fontSize: RouteManager.width / 25,
-                                      //             ),
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 30,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 30),
-                                      //         Text(
-                                      //           "Passengers : ",
-                                      //           style: TextStyle(
-                                      //             fontWeight: FontWeight.bold,
-                                      //             color: const Color.fromARGB(255, 115, 252, 119),
-                                      //             fontSize: RouteManager.width / 23,
-                                      //           ),
-                                      //         ),
-                                      //         Text(
-                                      //           Provider.of<PendingJobsPro>(context, listen: false).jobs[index].passengers.toString(),
-                                      //           style: TextStyle(
-                                      //             color: Colors.white,
-                                      //             fontSize: RouteManager.width / 25,
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 30,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 30),
-                                      //         Text(
-                                      //           "Luggage : ",
-                                      //           style: TextStyle(
-                                      //             fontWeight: FontWeight.bold,
-                                      //             color: const Color.fromARGB(255, 115, 252, 119),
-                                      //             fontSize: RouteManager.width / 23,
-                                      //           ),
-                                      //         ),
-                                      //         Text(
-                                      //           Provider.of<PendingJobsPro>(context, listen: false).jobs[index].luggage.toString(),
-                                      //           style: TextStyle(
-                                      //             color: Colors.white,
-                                      //             fontSize: RouteManager.width / 25,
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 30,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 30),
-                                      //         Text(
-                                      //           "Payment Method : ",
-                                      //           style: TextStyle(
-                                      //             fontWeight: FontWeight.bold,
-                                      //             color: const Color.fromARGB(255, 115, 252, 119),
-                                      //             fontSize: RouteManager.width / 23,
-                                      //           ),
-                                      //         ),
-                                      //         Text(
-                                      //           Provider.of<PendingJobsPro>(context, listen: false).jobs[index].paymentmethod,
-                                      //           style: TextStyle(
-                                      //             color: Colors.white,
-                                      //             fontSize: RouteManager.width / 25,
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 30,
-                                      //     ),
-                                      //     Row(
-                                      //       children: [
-                                      //         SizedBox(width: RouteManager.width / 30),
-                                      //         Text(
-                                      //           "Total Amount : ",
-                                      //           style: TextStyle(
-                                      //             fontWeight: FontWeight.bold,
-                                      //             color: const Color.fromARGB(255, 115, 252, 119),
-                                      //             fontSize: RouteManager.width / 23,
-                                      //           ),
-                                      //         ),
-                                      //         Text(
-                                      //           Provider.of<PendingJobsPro>(context, listen: false).jobs[index].total_amount.toString() + " \$",
-                                      //           style: TextStyle(
-                                      //             color: Colors.white,
-                                      //             fontSize: RouteManager.width / 25,
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ),
-                                      //     SizedBox(
-                                      //       height: RouteManager.width / 30,
-                                      //     )
-                                      //   ],
-                                      // ),
                                     ],
                                   ),
                                 ),

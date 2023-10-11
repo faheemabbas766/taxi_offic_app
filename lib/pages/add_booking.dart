@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
-
+import '../providers/themepro.dart';
 class AddBookingScreen extends StatefulWidget {
   const AddBookingScreen({Key? key}) : super(key: key);
 
@@ -197,9 +197,9 @@ class _DetailsPageState extends State<AddBookingScreen> {
     Widget _buildSuggestionsList(List<String> suggestions, TextEditingController controller) {
       return Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: AppColors.of(context).primaryColor),
           borderRadius: BorderRadius.circular(4.0),
-          color: Colors.white,
+          color: AppColors.of(context).primaryDimColor,
         ),
         child: ListView.builder(
           shrinkWrap: true,
@@ -221,22 +221,27 @@ class _DetailsPageState extends State<AddBookingScreen> {
     }
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.of(context).secondaryDimColor,
         elevation: 0,
-        title: const Center(child: Text("Booking Form")),
+        title: Center(child: Text("Booking Form",style: TextStyle(
+          color: AppColors.of(context).primaryColor,
+        ),)),
       ),
-      backgroundColor: const Color.fromARGB(255, 247, 243, 243),
+      backgroundColor: AppColors.of(context).primaryDimColor,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 20.0,
+              height: 15.0,
             ),
-            const Text(
+            Text(
               "Pickup:",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: AppColors.of(context).primaryColor,
+                  fontSize: 18, fontWeight: FontWeight.bold
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -249,10 +254,10 @@ class _DetailsPageState extends State<AddBookingScreen> {
               child: TextField(
                 controller: _pickupController,
                 onChanged: _onPickupChanged,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                     hintText: "Enter Your Pickup location",
                     filled: true,
-                    fillColor: Colors.white),
+                    fillColor: AppColors.of(context).secondaryDimColor),
               ),
             ),
             if (_pickupSuggestions.isNotEmpty)
@@ -260,7 +265,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
             const SizedBox(height: 10.0),
             const Text(
               "Destination:",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
@@ -273,10 +278,10 @@ class _DetailsPageState extends State<AddBookingScreen> {
               child: TextField(
                 controller: _dropController,
                 onChanged: _onDropChanged,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                     hintText: "Enter Your Pickup location",
                     filled: true,
-                    fillColor: Colors.white),
+                    fillColor: AppColors.of(context).secondaryDimColor),
               ),
             ),
             if (_dropSuggestions.isNotEmpty)
@@ -285,7 +290,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
             const Text(
               "Cars",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 18,
               ),
             ),
             const SizedBox(height: 10.0),
@@ -293,16 +298,16 @@ class _DetailsPageState extends State<AddBookingScreen> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 border: Border.all(
-                  color: Colors.black,
+                  color: AppColors.of(context).primaryColor,
                   width: 1,
                 ),
-                color: Colors.white,
+                color: AppColors.of(context).secondaryDimColor,
               ),
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: carId,
-                dropdownColor: Colors.white,
-                style: const TextStyle(color: Colors.black),
+                dropdownColor: AppColors.of(context).primaryDimColor,
+                style: TextStyle(color: AppColors.of(context).primaryColor),
                 onChanged: (String? newValue) {
                   setState(() {
                     carId = newValue!;
@@ -316,7 +321,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Select",
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -329,7 +334,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Saloon",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -340,7 +345,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Executive",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -351,7 +356,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "6 Seater",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -362,17 +367,17 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "8 Seater",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 15.0),
             const Text(
               "Name:",
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(
               height: 10,
@@ -384,17 +389,17 @@ class _DetailsPageState extends State<AddBookingScreen> {
               ),
               child: TextField(
                 controller: _nameController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Name",
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.of(context).secondaryDimColor,
                 ),
               ),
             ),
             const SizedBox(height: 10.0),
             const Text(
               "Phone Number:",
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(
               height: 10,
@@ -406,32 +411,32 @@ class _DetailsPageState extends State<AddBookingScreen> {
               ),
               child: TextField(
                 controller: _phoneController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Telephone",
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.of(context).secondaryDimColor,
                 ),
               ),
             ),
             const SizedBox(height: 10.0),
             const Text(
               "Date & Time",
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(
               height: 10,
             ),
             TextField(
               controller: _dateTimeController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                enabledBorder: OutlineInputBorder(),
-                focusedBorder: OutlineInputBorder(),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                enabledBorder: const OutlineInputBorder(),
+                focusedBorder: const OutlineInputBorder(),
                 labelText: "Select Date and Time",
                 hintStyle: TextStyle(),
                 filled: true,
-                fillColor: Colors.white,
-                suffixIcon: Icon(Icons.calendar_today),
+                fillColor: AppColors.of(context).secondaryDimColor,
+                suffixIcon: const Icon(Icons.calendar_today),
               ),
               onTap: () async {
                 await _selectDateAndTime(context);
@@ -440,7 +445,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
             const SizedBox(height: 10.0),
             const Text(
               "Passenger:",
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(
               height: 10,
@@ -452,17 +457,17 @@ class _DetailsPageState extends State<AddBookingScreen> {
               ),
               child: TextField(
                 controller: _passengerController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Enter Passenger",
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.of(context).secondaryDimColor,
                 ),
               ),
             ),
             const SizedBox(height: 10.0),
             const Text(
               "Flight Number:",
-              style: TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 18),
             ),
             const SizedBox(
               height: 10,
@@ -474,10 +479,10 @@ class _DetailsPageState extends State<AddBookingScreen> {
               ),
               child: TextField(
                 controller: _flightController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Flight Number",
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: AppColors.of(context).secondaryDimColor,
                 ),
               ),
             ),
@@ -487,11 +492,11 @@ class _DetailsPageState extends State<AddBookingScreen> {
               children: [
                 Text(
                   "Large Luggage",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 16),
                 ),
                 Text(
-                  "Medium Luggages",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  "Medium Luggage",
+                  style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
@@ -509,9 +514,9 @@ class _DetailsPageState extends State<AddBookingScreen> {
                     ),
                     child: TextField(
                       controller: _luggageLargeController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: AppColors.of(context).secondaryDimColor,
                       ),
                     ),
                   ),
@@ -527,36 +532,37 @@ class _DetailsPageState extends State<AddBookingScreen> {
                     ),
                     child: TextField(
                       controller: _luggageMediumController,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: AppColors.of(context).secondaryDimColor,
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 15.0),
             const Text(
               "Payment by:",
-              style: TextStyle(fontSize: 32),
+              style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                border: Border.all(color: Colors.black, width: 1),
-                color: Colors.white,
+                border: Border.all(color: AppColors.of(context).primaryColor, width: 1),
+                color: AppColors.of(context).secondaryDimColor,
               ),
               child: DropdownButton<String>(
                 isExpanded: true,
                 value: paymentMethod,
-                style: const TextStyle(color: Colors.black),
+                style: TextStyle(color: AppColors.of(context).primaryColor),
                 onChanged: (String? newValue) {
                   setState(() {
                     paymentMethod = newValue!;
                   });
                 },
+                dropdownColor: AppColors.of(context).primaryDimColor,
                 items: const [
                   DropdownMenuItem<String>(
                     value: "select",
@@ -565,7 +571,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Payment Method",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -576,7 +582,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Cash",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
@@ -587,10 +593,11 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Credit",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
+
                   DropdownMenuItem<String>(
                     value: "3",
                     child: Padding(
@@ -598,31 +605,19 @@ class _DetailsPageState extends State<AddBookingScreen> {
                       child: Text(
                         "Account",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w400),
+                            fontSize: 16, fontWeight: FontWeight.w400),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 15.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: TextButton(
-                    onPressed: _confirmBooking,
-                    child: const Text(
-                      "Confirm Booking",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ),
-                Container(
+                  width: 150,
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(10),
@@ -631,9 +626,23 @@ class _DetailsPageState extends State<AddBookingScreen> {
                     onPressed: () {
                       // Clear form or perform other actions
                     },
-                    child: const Text(
+                    child: Text(
                       "Clear Booking",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: AppColors.of(context).primaryColor),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextButton(
+                    onPressed: _confirmBooking,
+                    child: Text(
+                      "Confirm Booking",
+                      style: TextStyle(color: AppColors.of(context).primaryColor),
                     ),
                   ),
                 ),

@@ -13,6 +13,7 @@ import 'package:taxi_app/providers/bottomnavpro.dart';
 import 'package:taxi_app/providers/homepro.dart';
 import 'package:taxi_app/providers/pendingjobspro.dart';
 import 'package:taxi_app/providers/startshiftpro.dart';
+import 'package:taxi_app/providers/themepro.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'Api & Routes/api.dart';
 import 'Api & Routes/routes.dart';
@@ -609,8 +610,11 @@ void main() async {
             create: (BuildContext context) => TripDetailsPro()),
         ChangeNotifierProvider<PobMapPro>(
             create: (BuildContext context) => PobMapPro()),
+        ChangeNotifierProvider<ThemeModeProvider>(
+          create: (BuildContext context) => ThemeModeProvider(),
+        ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -648,19 +652,20 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    _handleLocationPermission(context);
-    //RouteManager.context = context;
-    RouteManager.width = MediaQuery.of(context).size.width;
-    RouteManager.height = MediaQuery.of(context).size.height;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          // const Color.fromARGB(255, 243, 168, 56)
-          // primaryColor: Color.fromARGB(255, 243, 168, 56),
-          ),
-      //home:const AddBookingScreen()
-      initialRoute: RouteManager.rootpage,
-      onGenerateRoute: RouteManager.generateRoute,
+    return ChangeNotifierProvider(
+      create: (context) => ThemeModeProvider(),
+      child: Consumer<ThemeModeProvider>(
+        builder: (context, themeModeProvider, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData.light(),
+            darkTheme: ThemeData.dark(),
+            themeMode: themeModeProvider.themeMode, // Use theme mode from the provider
+            initialRoute: RouteManager.rootpage,
+            onGenerateRoute: RouteManager.generateRoute,
+          );
+        },
+      ),
     );
   }
 }

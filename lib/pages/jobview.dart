@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:taxi_app/const/colors.dart';
 import 'package:taxi_app/pages/pendingjobs.dart';
+import 'package:taxi_app/providers/themepro.dart';
 import '../Api & Routes/routes.dart';
 import '../providers/bottomnavpro.dart';
 import 'completedjobs.dart';
@@ -24,12 +24,11 @@ class _JobViewState extends State<JobView> {
     return WillPopScope(
       onWillPop: () async {
         Provider.of<BottomNavigationPro>(context, listen: false).clearAll();
-
         return true;
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: yellowcolor,
+          backgroundColor: AppColors.of(context).accentColor,
           title: Row(
             children: [
               SizedBox(
@@ -41,11 +40,11 @@ class _JobViewState extends State<JobView> {
               ),
             ],
           ),
-          shadowColor: Colors.white,
         ),
-        body: Scaffold(
-          bottomNavigationBar: Container(
-            child: BottomNavigationBar(
+        body: SafeArea(
+          child: Scaffold(
+            backgroundColor:AppColors.of(context).primaryColor,
+            bottomNavigationBar: BottomNavigationBar(
               items: [
                 BottomNavigationBarItem(
                   icon: Selector<BottomNavigationPro, Icon>(
@@ -78,7 +77,7 @@ class _JobViewState extends State<JobView> {
                   activeIcon: const Icon(Icons.check, color: Color(0xffFBC02D)),
                 ),
               ],
-              backgroundColor: Color(0xffF5F4F8),
+              backgroundColor: AppColors.of(context).primaryColor,
               selectedFontSize: RouteManager.width / 26,
               iconSize: RouteManager.width / 12,
               unselectedIconTheme: const IconThemeData(opacity: 0.7),
@@ -95,12 +94,12 @@ class _JobViewState extends State<JobView> {
                     .notifyListenerz();
               },
             ),
-          ),
-          body: Selector<BottomNavigationPro, int>(
-            selector: (p0, p1) => p1.navindex,
-            builder: (context, pindex, child) {
-              return tabs[pindex];
-            },
+            body: Selector<BottomNavigationPro, int>(
+              selector: (p0, p1) => p1.navindex,
+              builder: (context, pindex, child) {
+                return tabs[pindex];
+              },
+            ),
           ),
         ),
       ),

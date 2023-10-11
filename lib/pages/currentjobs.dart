@@ -6,6 +6,7 @@ import 'package:taxi_app/providers/currentjobspro.dart';
 import 'package:taxi_app/providers/homepro.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../providers/themepro.dart';
 import 'live_status.dart';
 
 class CurrentJobs extends StatefulWidget {
@@ -60,7 +61,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: RouteManager.appclr,
+      backgroundColor: AppColors.of(context).secondaryDimColor,
       body: Provider.of<CurrentJobsPro>(context).isloaded
           ? Provider.of<CurrentJobsPro>(context).jobs.isEmpty
           ? Center(
@@ -115,8 +116,8 @@ class _CurrentJobsState extends State<CurrentJobs> {
                     height: RouteManager.width / 80,
                   ),
                   Container(
-                    color: const Color(0xFFFEC400),
                     child: Card(
+                      color: AppColors.of(context).primaryColor,
                       child: Stack(
                         children: [
                           Column(
@@ -125,7 +126,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
                                 height: RouteManager.width / 20,
                               ),
                               Container(
-                                color: Colors.grey,
+                                color: AppColors.of(context).secondaryColor,
                                 width: RouteManager.width / 300,
                                 height: RouteManager.width / 3,
                               ),
@@ -191,6 +192,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
                                       fontWeight: FontWeight.w500,
                                       fontSize:
                                       RouteManager.width / 23,
+                                      color: AppColors.of(context).secondaryColor,
                                     ),
                                   ),
                                 ],
@@ -223,13 +225,10 @@ class _CurrentJobsState extends State<CurrentJobs> {
                                           style: TextStyle(
                                             fontWeight:
                                             FontWeight.bold,
-                                            color: const Color(
-                                                0xff000000),
-                                            fontSize:
-                                            RouteManager.width /
-                                                23,
+                                            color: AppColors.of(context).secondaryColor,
+                                            fontSize: 14,
                                           ),
-                                          maxLines: 1,
+                                          maxLines: 2,
                                           overflow:
                                           TextOverflow.ellipsis,
                                         ),
@@ -257,28 +256,21 @@ class _CurrentJobsState extends State<CurrentJobs> {
                                       SizedBox(
                                           width: RouteManager.width /
                                               14),
-                                      SizedBox(
-                                        width:
-                                        RouteManager.width / 1.51,
-                                        child: Text(
-                                          Provider.of<CurrentJobsPro>(
-                                              context,
-                                              listen: false)
-                                              .jobs[index]
-                                              .pickupadress,
-                                          style: TextStyle(
-                                            fontWeight:
-                                            FontWeight.bold,
-                                            color: const Color(
-                                                0xFF000000),
-                                            fontSize:
-                                            RouteManager.width /
-                                                23,
-                                          ),
-                                          maxLines: 1,
-                                          overflow:
-                                          TextOverflow.ellipsis,
+                                      Text(
+                                        Provider.of<CurrentJobsPro>(
+                                            context,
+                                            listen: false)
+                                            .jobs[index]
+                                            .pickupadress,
+                                        style: TextStyle(
+                                          fontWeight:
+                                          FontWeight.bold,
+                                          color: AppColors.of(context).secondaryColor,
+                                          fontSize:14,
                                         ),
+                                        maxLines: 2,
+                                        overflow:
+                                        TextOverflow.ellipsis,
                                       ),
                                     ],
                                   ),

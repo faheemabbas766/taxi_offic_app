@@ -439,7 +439,7 @@ class _StartShiftState extends State<StartShift> {
                                                       fontSize:
                                                           RouteManager.width /
                                                               20,
-                                                      color: Colors.black,
+                                                      color: Theme.of(context).secondaryHeaderColor,
                                                     ),
                                                   ),
                                                 ],
@@ -463,7 +463,7 @@ class _StartShiftState extends State<StartShift> {
                                                       fontSize:
                                                           RouteManager.width /
                                                               20,
-                                                      color: Colors.black,
+                                                      color: Theme.of(context).secondaryHeaderColor,
                                                     ),
                                                   ),
                                                 ],

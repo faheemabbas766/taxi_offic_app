@@ -5,6 +5,7 @@ import 'package:taxi_app/pages/profile.dart';
 
 import '../controller/homecontroller.dart';
 import '../pages/home.dart';
+import '../providers/themepro.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -19,7 +20,7 @@ class _BottomBarState extends State<BottomBar> {
     var controller = Get.put(HomeController());
 
     var naBody = [
-      Home(),
+      const Home(),
       Container(
         color: Colors.amber,
       ),
@@ -29,7 +30,7 @@ class _BottomBarState extends State<BottomBar> {
       Container(
         color: Colors.black,
       ),
-      ProfileScreen(),
+      const ProfileScreen(),
     ];
     return Scaffold(
       body: Column(
@@ -42,16 +43,16 @@ class _BottomBarState extends State<BottomBar> {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: AppColors.of(context).primaryColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
           child: GNav(
-              backgroundColor: Colors.white,
-              color: const Color(0xff878787),
+              backgroundColor: AppColors.of(context).primaryColor,
+              color: AppColors.of(context).secondaryColor,
               activeColor: const Color(0xffFEBD11),
               gap: 4,
               padding: const EdgeInsets.all(16),
-              tabBackgroundColor: const Color(0xffF5F5FF),
+              tabBackgroundColor: AppColors.of(context).primaryDimColor,
               onTabChange: (value) {
                 controller.currentNavIndex.value = value;
               },

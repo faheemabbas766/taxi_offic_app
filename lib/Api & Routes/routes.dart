@@ -6,6 +6,7 @@ import 'package:taxi_app/pages/home.dart';
 import 'package:taxi_app/pages/jobview.dart';
 import 'package:taxi_app/pages/tripdetails.dart';
 
+import '../pages/live_status.dart';
 import '../pages/pobmap.dart';
 import '../pages/splashscreen.dart';
 import '../pages/startshift.dart';
@@ -26,6 +27,7 @@ class RouteManager {
   static const String tripdetailspage = "/tripdetails";
   static const String pobmappage = "/pobmappage";
   static const String addBooking = "/add_booking";
+  static const String liveStatus = "/live_status";
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case signinpage:
@@ -44,8 +46,10 @@ class RouteManager {
         return MaterialPageRoute(builder: (context) => TripDetails());
       case pobmappage:
         return MaterialPageRoute(builder: (context) => PobMap());
-        case addBooking:
-      return MaterialPageRoute(builder: (context) => AddBookingScreen());
+      case addBooking:
+        return MaterialPageRoute(builder: (context) => AddBookingScreen());
+      case liveStatus:
+        return MaterialPageRoute(builder: (context) => ShowDialogScreen());
       default:
         throw const FormatException("Route no Found!");
     }

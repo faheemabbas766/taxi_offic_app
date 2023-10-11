@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/themepro.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -9,68 +12,38 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool isVibrateEnabled = false;
-  bool isNightModeEnabled = false;
-
-  // Function to toggle vibrate mode
-  void toggleVibrateMode() {
-    setState(() {
-      isVibrateEnabled = !isVibrateEnabled;
-    });
-  }
-
-  // Function to toggle night mode
+  bool isNightModeEnabled = true;
   void toggleNightMode() {
-    setState(() {
-      isNightModeEnabled = !isNightModeEnabled;
-    });
+    final themeModeProvider = Provider.of<ThemeModeProvider>(context, listen: false);
+    themeModeProvider.toggleTheme();
   }
+
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Screen"),
+        title: const Text("Profile Screen"),
       ),
+      backgroundColor: AppColors.of(context).primaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Profile Information", style: TextStyle(fontSize: 20)),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-              },
-              child: Text("Play Ringtone"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-              },
-              child: Text("Stop Ringtone"),
-            ),
-            SizedBox(height: 20),
+            const Text("Profile Information", style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Vibrate Mode: "),
-                Switch(
-                  value: isVibrateEnabled,
-                  onChanged: (value) {
-                    toggleVibrateMode();
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Night Mode: "),
+                const Text("Night Mode: "),
                 Switch(
                   value: isNightModeEnabled,
                   onChanged: (value) {
-                    toggleNightMode();
+                    setState(() {
+                      isNightModeEnabled = !isNightModeEnabled;
+                      toggleNightMode();
+                    });
                   },
                 ),
               ],

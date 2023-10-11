@@ -99,7 +99,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                             child: Column(
                               children: [
                                 // Container(
-                                //   color: Colors.black,
+                                //   color: Theme.of(context).secondaryHeaderColor,
                                 //   height: RouteManager.width / 30,
                                 // ),
                                 Container(

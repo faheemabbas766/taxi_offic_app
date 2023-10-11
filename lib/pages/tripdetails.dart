@@ -217,7 +217,7 @@ class _TripDetailsState extends State<TripDetails> {
                             "Available Balance ${Provider.of<TripDetailsPro>(context).amount}\$",
                             style: TextStyle(
                               fontSize: RouteManager.width / 23,
-                              color: Colors.black,
+                              color: Theme.of(context).secondaryHeaderColor,
                             ),
                           ),
                         ),
