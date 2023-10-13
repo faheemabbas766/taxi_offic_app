@@ -23,7 +23,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
   }
   Future<void> fetchData() async {
     await getMyCurrentJobs();
-    if( !Provider.of<CurrentJobsPro>(context, listen: false).jobs.isEmpty){
+    if( Provider.of<CurrentJobsPro>(context, listen: false).jobs.isNotEmpty){
       Navigator.push(context, MaterialPageRoute(builder: (context) => ShowDialogScreen()));
     }
 }
@@ -115,173 +115,171 @@ class _CurrentJobsState extends State<CurrentJobs> {
                   SizedBox(
                     height: RouteManager.width / 80,
                   ),
-                  Container(
-                    child: Card(
-                      color: AppColors.of(context).primaryColor,
-                      child: Stack(
-                        children: [
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: RouteManager.width / 20,
-                              ),
-                              Container(
-                                color: AppColors.of(context).secondaryColor,
-                                width: RouteManager.width / 300,
-                                height: RouteManager.width / 3,
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: RouteManager.width / 6.4,
-                              ),
-                              80.heightBox,
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                children: [
-                                  5.widthBox,
-                                  Image.asset(
-                                    'assets/money.png',
-                                    width: 14,
-                                    height: 14,
+                  Card(
+                    color: AppColors.of(context).primaryColor,
+                    child: Stack(
+                      children: [
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: RouteManager.width / 20,
+                            ),
+                            Container(
+                              color: AppColors.of(context).secondaryColor,
+                              width: RouteManager.width / 300,
+                              height: RouteManager.width / 3,
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: RouteManager.width / 6.4,
+                            ),
+                            80.heightBox,
+                            Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.start,
+                              children: [
+                                5.widthBox,
+                                Image.asset(
+                                  'assets/money.png',
+                                  width: 14,
+                                  height: 14,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "${Provider.of<CurrentJobsPro>(context).jobs[index].total_amount} £",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: const Color.fromARGB(
+                                        255, 47, 150, 44),
+                                    fontSize:
+                                    RouteManager.width / 20,
                                   ),
-                                  const SizedBox(
-                                    width: 10,
+                                ),
+                                SizedBox(
+                                    width: RouteManager.width / 80),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.start,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 5,
+                                    vertical: 5,
                                   ),
-                                  Text(
-                                    "${Provider.of<CurrentJobsPro>(context).jobs[index].total_amount} £",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: const Color.fromARGB(
-                                          255, 47, 150, 44),
-                                      fontSize:
-                                      RouteManager.width / 20,
-                                    ),
+                                  child: Icon(Icons.person),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  Provider.of<CurrentJobsPro>(
+                                      context)
+                                      .jobs[index]
+                                      .name,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize:
+                                    RouteManager.width / 23,
+                                    color: AppColors.of(context).secondaryColor,
                                   ),
-                                  SizedBox(
-                                      width: RouteManager.width / 80),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 5,
-                                      vertical: 5,
-                                    ),
-                                    child: Icon(Icons.person),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    Provider.of<CurrentJobsPro>(
-                                        context)
-                                        .jobs[index]
-                                        .name,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize:
-                                      RouteManager.width / 23,
-                                      color: AppColors.of(context).secondaryColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                  height: RouteManager.width / 30),
-                              Stack(
-                                children: [
-                                  SizedBox(
-                                      width: RouteManager.width / 30),
-                                  Icon(
-                                    Icons.location_on_outlined,
-                                    color: Colors.red,
-                                    size: RouteManager.width / 16,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                          width: RouteManager.width /
-                                              14),
-                                      SizedBox(
-                                        width:
-                                        RouteManager.width / 1.51,
-                                        child: Text(
-                                          Provider.of<CurrentJobsPro>(
-                                              context,
-                                              listen: false)
-                                              .jobs[index]
-                                              .dropaddress,
-                                          style: TextStyle(
-                                            fontWeight:
-                                            FontWeight.bold,
-                                            color: AppColors.of(context).secondaryColor,
-                                            fontSize: 14,
-                                          ),
-                                          maxLines: 2,
-                                          overflow:
-                                          TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                  height: RouteManager.width / 40),
-                              SizedBox(
-                                height: RouteManager.width / 60,
-                              ),
-                              Stack(
-                                children: [
-                                  SizedBox(
-                                      width: RouteManager.width / 30),
-                                  Icon(
-                                    Icons.location_on_outlined,
-                                    color: Colors.green,
-                                    size: RouteManager.width / 16,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                          width: RouteManager.width /
-                                              14),
-                                      Text(
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                                height: RouteManager.width / 30),
+                            Stack(
+                              children: [
+                                SizedBox(
+                                    width: RouteManager.width / 30),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  color: Colors.red,
+                                  size: RouteManager.width / 16,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                        width: RouteManager.width /
+                                            14),
+                                    SizedBox(
+                                      width:
+                                      RouteManager.width / 1.51,
+                                      child: Text(
                                         Provider.of<CurrentJobsPro>(
                                             context,
                                             listen: false)
                                             .jobs[index]
-                                            .pickupadress,
+                                            .dropaddress,
                                         style: TextStyle(
                                           fontWeight:
                                           FontWeight.bold,
                                           color: AppColors.of(context).secondaryColor,
-                                          fontSize:14,
+                                          fontSize: 14,
                                         ),
                                         maxLines: 2,
                                         overflow:
                                         TextOverflow.ellipsis,
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                  height: RouteManager.width / 500),
-                            ],
-                          ),
-                        ],
-                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                                height: RouteManager.width / 40),
+                            SizedBox(
+                              height: RouteManager.width / 60,
+                            ),
+                            Stack(
+                              children: [
+                                SizedBox(
+                                    width: RouteManager.width / 30),
+                                Icon(
+                                  Icons.location_on_outlined,
+                                  color: Colors.green,
+                                  size: RouteManager.width / 16,
+                                ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                        width: RouteManager.width /
+                                            14),
+                                    Text(
+                                      Provider.of<CurrentJobsPro>(
+                                          context,
+                                          listen: false)
+                                          .jobs[index]
+                                          .pickupadress,
+                                      style: TextStyle(
+                                        fontWeight:
+                                        FontWeight.bold,
+                                        color: AppColors.of(context).secondaryColor,
+                                        fontSize:14,
+                                      ),
+                                      maxLines: 2,
+                                      overflow:
+                                      TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                                height: RouteManager.width / 500),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   Row(

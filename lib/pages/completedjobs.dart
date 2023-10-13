@@ -52,7 +52,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.of(context).primaryDimColor,
+      backgroundColor: AppColors.of(context).secondaryDimColor,
       body: Provider.of<CompletedJobsPro>(context).isloaded
           ? Provider.of<CompletedJobsPro>(context).jobs.isEmpty
               ? Center(
@@ -156,7 +156,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                               .filterdate !=
                                           null
                                       ? const Color.fromARGB(255, 82, 177, 255)
-                                      : AppColors.of(context).secondaryDimColor,
+                                      : AppColors.of(context).primaryColor,
                                 ),
                                 child: Row(
                                   children: [
@@ -166,7 +166,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                       "Date Range  ",
                                       style: TextStyle(
                                           fontSize: RouteManager.width / 22,
-                                          color: AppColors.of(context).primaryColor),
+                                          color: AppColors.of(context).secondaryColor),
                                     ),
                                   ],
                                 ),
@@ -290,7 +290,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                           "No Jobs in this Range",
                                           style: TextStyle(
                                             fontSize: RouteManager.width / 20,
-                                            color: Theme.of(context).secondaryHeaderColor,
+                                            color: AppColors.of(context).secondaryColor,
                                           ),
                                         ),
                                       ],
@@ -483,7 +483,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                       height: RouteManager.width / 80,
                                     ),
                                     Card(
-                                      color: Colors.grey,
+                                      color: AppColors.of(context).primaryColor,
                                       child: Stack(
                                         children: [
                                           Column(
@@ -498,7 +498,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                           RouteManager.width /
                                                               1.364),
                                                   Container(
-                                                    color: AppColors.of(context).primaryColor,
+                                                    color: AppColors.of(context).secondaryColor,
                                                     width:
                                                         RouteManager.width /
                                                             300,
@@ -520,10 +520,6 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                           ),
                                           Column(
                                             children: [
-                                              // Container(
-                                              //   color: Theme.of(context).secondaryHeaderColor,
-                                              //   height: RouteManager.width / 30,
-                                              // ),
                                               Container(
                                                 padding: EdgeInsets.only(
                                                   top:
@@ -532,7 +528,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                       RouteManager.width / 60,
                                                 ),
                                                 decoration: BoxDecoration(
-                                                  // color: Color.fromARGB(255, 47, 150, 44),
+                                                  color: const Color.fromARGB(255, 47, 150, 44),
                                                   borderRadius:
                                                       BorderRadius.only(
                                                     topRight: Radius.circular(
@@ -552,7 +548,10 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                   children: [
                                                     Row(
                                                       children: [
-                                                        Icon(Icons.person),
+                                                        Icon(
+                                                          Icons.person,
+                                                          color: AppColors.of(context).secondaryColor
+                                                        ),
                                                         5.widthBox,
                                                         Text(
                                                           Provider.of<CompletedJobsPro>(
@@ -565,7 +564,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w500,
-                                                            // color: Colors.white,
+                                                            color: AppColors.of(context).secondaryColor,
                                                             fontSize:
                                                                 RouteManager
                                                                         .width /
@@ -584,7 +583,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                           size: RouteManager
                                                                   .width /
                                                               15,
-                                                          // color: Colors.white,
+                                                          color: AppColors.of(context).secondaryColor,
                                                         ),
                                                         Builder(
                                                           builder: (context) {
@@ -662,7 +661,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
-                                                                // color: Colors.white,
+                                                                    color: AppColors.of(context).secondaryColor,
                                                                 fontSize:
                                                                     RouteManager
                                                                             .width /
@@ -718,7 +717,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                                 FontWeight
                                                                     .bold,
                                                             color:
-                                                            AppColors.of(context).primaryColor,
+                                                            AppColors.of(context).secondaryColor,
                                                             fontSize:
                                                                 RouteManager
                                                                         .width /
@@ -781,7 +780,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold,
-                                                            color: AppColors.of(context).primaryColor,
+                                                            color: AppColors.of(context).secondaryColor,
                                                             fontSize:
                                                                 RouteManager
                                                                         .width /
@@ -818,10 +817,10 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                             .jobs[index]
                                                             .paymentmethod}  ",
                                                     style: TextStyle(
-                                                        // color: Colors.white,
                                                         fontSize: RouteManager
                                                                 .width /
                                                             20,
+                                                        color: AppColors.of(context).secondaryColor,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -833,7 +832,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                                     style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      color: AppColors.of(context).primaryColor,
+                                                      color: AppColors.of(context).secondaryColor,
                                                       fontSize:
                                                           RouteManager.width /
                                                               20,

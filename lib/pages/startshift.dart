@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart' as ft;
 import '../Api & Routes/api.dart';
 import '../Api & Routes/routes.dart';
 import '../providers/startshiftpro.dart';
+import '../providers/themepro.dart';
 
 class StartShift extends StatefulWidget {
   @override
@@ -32,19 +33,18 @@ class _StartShiftState extends State<StartShift> {
         return true;
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.of(context).primaryDimColor,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: AppColors.of(context).primaryColor,
           title: Row(
             children: [
               SizedBox(width: RouteManager.width / 5.6),
-              // Text(
-              //   "Shifts",
-              //   style: TextStyle(fontSize: RouteManager.width / 10),
-              // ),
+              Text(
+                "Shifts",
+                style: TextStyle(fontSize: RouteManager.width / 10,color: AppColors.of(context).secondaryColor),
+              ),
             ],
           ),
-          shadowColor: Colors.white,
         ),
         body: !Provider.of<StartShiftPro>(context).isloaded
             ? const Center(
@@ -80,7 +80,7 @@ class _StartShiftState extends State<StartShift> {
                                   Provider.of<HomePro>(context, listen: false)
                                       .vehicleid) {
                                 return Card(
-                                  color: const Color(0xffFFFBE7),
+                                  color: AppColors.of(context).primaryColor,
                                   shape: RoundedRectangleBorder(
                                     side: const BorderSide(
                                         color: Color(0xffFEC400)),
@@ -103,8 +103,7 @@ class _StartShiftState extends State<StartShift> {
                                                 style: TextStyle(
                                                   fontSize:
                                                       RouteManager.width / 20,
-                                                  color:
-                                                      const Color(0xFF5A5A5A),
+                                                  color: AppColors.of(context).secondaryColor,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -113,8 +112,7 @@ class _StartShiftState extends State<StartShift> {
                                                 style: TextStyle(
                                                     fontSize:
                                                         RouteManager.width / 20,
-                                                    color: const Color(
-                                                        0xFF5A5A5A)),
+                                                    color: AppColors.of(context).secondaryColor),
                                               ),
                                               Provider.of<HomePro>(context)
                                                           .shiftfrom!
@@ -128,8 +126,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     )
                                                   : Text(
                                                       "${Provider.of<HomePro>(context).shiftfrom!.hour}:",
@@ -137,8 +134,7 @@ class _StartShiftState extends State<StartShift> {
                                                         fontSize:
                                                             RouteManager.width /
                                                                 20,
-                                                        color: const Color(
-                                                            0xFF5A5A5A),
+                                                        color: AppColors.of(context).secondaryColor,
                                                       ),
                                                     ),
                                               Provider.of<HomePro>(context)
@@ -153,8 +149,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     )
                                                   : Text(
                                                       Provider.of<HomePro>(
@@ -166,8 +161,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     ),
                                             ],
                                           ),
@@ -181,8 +175,7 @@ class _StartShiftState extends State<StartShift> {
                                                 style: TextStyle(
                                                   fontSize:
                                                       RouteManager.width / 20,
-                                                  color:
-                                                      const Color(0xFF5A5A5A),
+                                                  color: AppColors.of(context).secondaryColor,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -191,8 +184,7 @@ class _StartShiftState extends State<StartShift> {
                                                 style: TextStyle(
                                                     fontSize:
                                                         RouteManager.width / 20,
-                                                    color: const Color(
-                                                        0xFF5A5A5A)),
+                                                    color: AppColors.of(context).secondaryColor),
                                               ),
                                               Provider.of<HomePro>(context)
                                                           .shiftto!
@@ -206,8 +198,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     )
                                                   : Text(
                                                       "${Provider.of<HomePro>(context).shiftto!.hour}:",
@@ -215,8 +206,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     ),
                                               Provider.of<HomePro>(context)
                                                           .shiftto!
@@ -230,8 +220,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     )
                                                   : Text(
                                                       Provider.of<HomePro>(
@@ -243,8 +232,7 @@ class _StartShiftState extends State<StartShift> {
                                                           fontSize: RouteManager
                                                                   .width /
                                                               20,
-                                                          color: const Color(
-                                                              0xFF5A5A5A)),
+                                                          color: AppColors.of(context).secondaryColor),
                                                     ),
                                             ],
                                           ),
@@ -259,7 +247,7 @@ class _StartShiftState extends State<StartShift> {
                                                   fontSize:
                                                       RouteManager.width / 20,
                                                   color:
-                                                      const Color(0xFF5A5A5A),
+                                                  AppColors.of(context).secondaryColor,
                                                   fontWeight: FontWeight.w400,
                                                 ),
                                               ),
@@ -270,7 +258,7 @@ class _StartShiftState extends State<StartShift> {
                                                   fontSize:
                                                       RouteManager.width / 20,
                                                   color:
-                                                      const Color(0xFF5A5A5A),
+                                                  AppColors.of(context).secondaryColor,
                                                 ),
                                               ),
                                             ],
@@ -303,7 +291,7 @@ class _StartShiftState extends State<StartShift> {
                         opacity: 0.5,
                         child: Container(
                           width: RouteManager.width / 1.3,
-                          color: Colors.white,
+                          color: AppColors.of(context).primaryColor,
                           height: RouteManager.width / 100,
                         ),
                       ),
@@ -347,7 +335,7 @@ class _StartShiftState extends State<StartShift> {
                           child: Center(
                             child: Text("Stop Shift",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: AppColors.of(context).secondaryColor,
                                   fontSize: RouteManager.width / 12,
                                   fontWeight: FontWeight.bold,
                                 )),
@@ -361,7 +349,7 @@ class _StartShiftState extends State<StartShift> {
                       SizedBox(
                         height: RouteManager.width / 15,
                       ),
-                      Container(
+                      SizedBox(
                         height: RouteManager.height / 1.3,
                         child: ListView.builder(
                           itemCount: Provider.of<StartShiftPro>(context)
@@ -398,7 +386,7 @@ class _StartShiftState extends State<StartShift> {
                                             listen: false)
                                         .notifyListenerz();
                                   },
-                                  child: Container(
+                                  child: SizedBox(
                                     width: RouteManager.width,
                                     // alignment: Alignment.center,
                                     // color: Colors.red,
@@ -409,7 +397,7 @@ class _StartShiftState extends State<StartShift> {
                                                   .vehicles[ind]
                                                   .id
                                           ? const Color(0xfffebd23)
-                                          : const Color(0xFFFFFBE7),
+                                          : AppColors.of(context).primaryColor,
                                       elevation: 3,
                                       child: Stack(
                                         children: [
@@ -486,11 +474,10 @@ class _StartShiftState extends State<StartShift> {
                                                               1.2),
                                                   Container(
                                                     decoration:
-                                                        const BoxDecoration(
-                                                      color: Color.fromARGB(
-                                                          255, 255, 255, 255),
+                                                    BoxDecoration(
+                                                      color: AppColors.of(context).secondaryColor,
                                                       borderRadius:
-                                                          BorderRadius.all(
+                                                          const BorderRadius.all(
                                                               Radius.circular(
                                                                   7)),
                                                     ),
@@ -566,7 +553,7 @@ class _StartShiftState extends State<StartShift> {
                           child: Center(
                             child: Text("Start Shift",
                                 style: TextStyle(
-                                  color: Colors.white,
+                                  color: AppColors.of(context).secondaryColor,
                                   fontSize: RouteManager.width / 12,
                                   fontWeight: FontWeight.bold,
                                 )),

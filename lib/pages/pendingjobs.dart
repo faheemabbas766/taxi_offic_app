@@ -44,11 +44,11 @@ class _PendingJobsState extends State<PendingJobs> {
       context: RouteManager.context!,
       builder: (cont) {
         return Dialog(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
+            decoration: BoxDecoration(
+              color: AppColors.of(context).secondaryColor,
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
             ),
@@ -62,7 +62,7 @@ class _PendingJobsState extends State<PendingJobs> {
                     width: 353,
                     height: 93,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFFFBE7),
+                      color: AppColors.of(context).secondaryColor,
                       border: Border.all(
                         width: 1,
                         color: const Color(0xFFFEC400),
@@ -476,7 +476,7 @@ class _PendingJobsState extends State<PendingJobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.of(context).primaryDimColor,
+      backgroundColor: AppColors.of(context).secondaryDimColor,
       body: Provider.of<PendingJobsPro>(context).isloaded
           ? Provider.of<PendingJobsPro>(context).jobs.isEmpty
               ? Center(
@@ -487,7 +487,7 @@ class _PendingJobsState extends State<PendingJobs> {
                         "No Pending Jobs",
                         style: TextStyle(
                           fontSize: RouteManager.width / 20,
-                          color: const Color.fromARGB(255, 54, 54, 54),
+                          color: AppColors.of(context).secondaryColor,
                         ),
                       ),
                       SizedBox(height: RouteManager.width / 23),
@@ -519,7 +519,6 @@ class _PendingJobsState extends State<PendingJobs> {
                 )
               : Container(
                   padding: EdgeInsets.only(top: RouteManager.width / 80),
-                  // color: Colors.red,
                   child: ListView.builder(
                       itemCount: Provider.of<PendingJobsPro>(context).jobs.length,
                       itemBuilder: (cont, index) {
@@ -533,185 +532,178 @@ class _PendingJobsState extends State<PendingJobs> {
                               SizedBox(
                                 height: RouteManager.width / 80,
                               ),
-                              Container(
-                                color: Colors.green,
-                                child: Card(
-                                  // color: const Color.fromARGB(108, 18, 76, 151),
-                                  child: Stack(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          SizedBox(height: RouteManager.width / 6.4),
-                                          Row(
-                                            children: [
-                                              SizedBox(width: RouteManager.width / 1.364),
-                                              Container(
-                                                color: Colors.grey,
-                                                width: RouteManager.width / 300,
-                                                height: RouteManager.width / 5.5,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        // mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          SizedBox(height: RouteManager.width / 6.4),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                "  ${Provider.of<PendingJobsPro>(context, listen: false).jobs[index].paymentmethod}  ",
-                                                style: TextStyle(
-                                                  fontSize: RouteManager.width / 20,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(height: RouteManager.width / 30),
-                                          // SizedBox(
-                                          //   height: RouteManager.width / 30,
-                                          // ),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            children: [
-                                              // SizedBox(height: RouteManager.width / 30),
-                                              Text(
-                                                "${Provider.of<PendingJobsPro>(context).jobs[index].total_amount} \$",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: const Color.fromARGB(255, 47, 150, 44),
-                                                  fontSize: RouteManager.width / 20,
-                                                ),
-                                              ),
-                                              SizedBox(width: RouteManager.width / 80),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          // Container(
-                                          //   color: Theme.of(context).secondaryHeaderColor,
-                                          //   height: RouteManager.width / 30,
-                                          // ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              // color: Color.fromARGB(255, 47, 150, 44),
-                                              borderRadius: BorderRadius.only(
-                                                topRight: Radius.circular(RouteManager.width / 90),
-                                                topLeft: Radius.circular(RouteManager.width / 90),
+                              Card(
+                                  color: AppColors.of(context).primaryColor,
+                                child: Stack(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        SizedBox(height: RouteManager.width / 6.4),
+                                        Row(
+                                          children: [
+                                            SizedBox(width: RouteManager.width / 1.364),
+                                            Container(
+                                              color: AppColors.of(context).secondaryColor,
+                                              width: RouteManager.width / 300,
+                                              height: RouteManager.width / 5.5,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      // mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        SizedBox(height: RouteManager.width / 6.4),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "  ${Provider.of<PendingJobsPro>(context, listen: false).jobs[index].paymentmethod}  ",
+                                              style: TextStyle(
+                                                fontSize: RouteManager.width / 20,
                                               ),
                                             ),
-                                            // width: RouteManager.width,
+                                          ],
+                                        ),
+                                        SizedBox(height: RouteManager.width / 30),
+                                        // SizedBox(
+                                        //   height: RouteManager.width / 30,
+                                        // ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            // SizedBox(height: RouteManager.width / 30),
+                                            Text(
+                                              "${Provider.of<PendingJobsPro>(context).jobs[index].total_amount} \$",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: const Color.fromARGB(255, 47, 150, 44),
+                                                fontSize: RouteManager.width / 20,
+                                              ),
+                                            ),
+                                            SizedBox(width: RouteManager.width / 80),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.amber,
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(RouteManager.width / 90),
+                                              topLeft: Radius.circular(RouteManager.width / 90),
+                                            ),
+                                          ),
+                                          // width: RouteManager.width,
 
-                                            child: Column(
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(width: RouteManager.width / 30),
+                                                  Text(
+                                                    Provider.of<PendingJobsPro>(context).jobs[index].name,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      color: AppColors.of(context).secondaryColor,
+                                                      fontSize: RouteManager.width / 23,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: RouteManager.width / 30,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(width: RouteManager.width / 30),
+                                                  Text(
+                                                    Provider.of<PendingJobsPro>(context).jobs[index].phn,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      color: AppColors.of(context).secondaryColor,
+                                                      fontSize: RouteManager.width / 23,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: RouteManager.width / 60,
+                                        ),
+                                        Stack(
+                                          children: [
+                                            SizedBox(width: RouteManager.width / 30),
+                                            Icon(
+                                              Icons.location_on,
+                                              color: const Color.fromARGB(255, 47, 150, 44),
+                                              size: RouteManager.width / 16,
+                                            ),
+                                            Row(
                                               children: [
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    SizedBox(width: RouteManager.width / 30),
-                                                    Text(
-                                                      Provider.of<PendingJobsPro>(context).jobs[index].name,
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.w500,
-                                                        // color: Colors.white,
-                                                        fontSize: RouteManager.width / 23,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                                SizedBox(width: RouteManager.width / 14),
                                                 SizedBox(
-                                                  height: RouteManager.width / 30,
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    SizedBox(width: RouteManager.width / 30),
-                                                    Text(
-                                                      Provider.of<PendingJobsPro>(context).jobs[index].phn,
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.w500,
-                                                        // color: Colors.white,
-                                                        fontSize: RouteManager.width / 23,
-                                                      ),
+                                                  width: RouteManager.width / 1.5,
+                                                  child: Text(
+                                                    Provider.of<PendingJobsPro>(context, listen: false).jobs[index].pickupadress,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: const Color.fromARGB(255, 47, 150, 44),
+                                                      fontSize: RouteManager.width / 23,
                                                     ),
-                                                  ],
+                                                    maxLines: 1,
+                                                    overflow: TextOverflow.ellipsis,
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          ),
-                                          SizedBox(
-                                            height: RouteManager.width / 60,
-                                          ),
-                                          Stack(
-                                            children: [
-                                              SizedBox(width: RouteManager.width / 30),
-                                              Icon(
-                                                Icons.location_on,
-                                                color: const Color.fromARGB(255, 47, 150, 44),
-                                                size: RouteManager.width / 16,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  SizedBox(width: RouteManager.width / 14),
-                                                  SizedBox(
-                                                    width: RouteManager.width / 1.5,
-                                                    child: Text(
-                                                      Provider.of<PendingJobsPro>(context, listen: false).jobs[index].pickupadress,
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        color: const Color.fromARGB(255, 47, 150, 44),
-                                                        fontSize: RouteManager.width / 23,
-                                                      ),
-                                                      maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
+                                          ],
+                                        ),
 
-                                          SizedBox(
-                                            height: RouteManager.width / 24,
-                                          ),
-                                          Stack(
-                                            children: [
-                                              SizedBox(width: RouteManager.width / 30),
-                                              Icon(
-                                                Icons.location_on,
-                                                color: const Color.fromARGB(255, 255, 120, 110),
-                                                size: RouteManager.width / 16,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  SizedBox(width: RouteManager.width / 14),
-                                                  SizedBox(
-                                                    width: RouteManager.width / 1.5,
-                                                    child: Text(
-                                                      Provider.of<PendingJobsPro>(context, listen: false).jobs[index].dropaddress,
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.bold,
-                                                        color: Color.fromARGB(255, 255, 120, 110),
-                                                        fontSize: RouteManager.width / 23,
-                                                      ),
-                                                      maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
+                                        SizedBox(
+                                          height: RouteManager.width / 24,
+                                        ),
+                                        Stack(
+                                          children: [
+                                            SizedBox(width: RouteManager.width / 30),
+                                            Icon(
+                                              Icons.location_on,
+                                              color: const Color.fromARGB(255, 255, 120, 110),
+                                              size: RouteManager.width / 16,
+                                            ),
+                                            Row(
+                                              children: [
+                                                SizedBox(width: RouteManager.width / 14),
+                                                SizedBox(
+                                                  width: RouteManager.width / 1.5,
+                                                  child: Text(
+                                                    Provider.of<PendingJobsPro>(context, listen: false).jobs[index].dropaddress,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Color.fromARGB(255, 255, 120, 110),
+                                                      fontSize: RouteManager.width / 23,
                                                     ),
+                                                    maxLines: 1,
+                                                    overflow: TextOverflow.ellipsis,
                                                   ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          SizedBox(
-                                            height: RouteManager.width / 40,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: RouteManager.width / 40,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

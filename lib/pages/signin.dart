@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;
@@ -199,9 +200,11 @@ class _SignInState extends State<SignIn> {
                                           Provider.of<HomePro>(context, listen: false).userid.toString(),).then(
                                           (value) {prefs.setString('token', Provider.of<HomePro>(context, listen: false).token).then(
                                                   (value) {
-                                                print(
-                                                  "SHARED PREFERENCES SAVEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDd",
+                                                if (kDebugMode) {
+                                                  print(
+                                                  "SHARED PREFERENCES SAVEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
                                                 );
+                                                }
 
                                                 Navigator.of(context).pushNamedAndRemoveUntil(
                                                   RouteManager.bottomPage,

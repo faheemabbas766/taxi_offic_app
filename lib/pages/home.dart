@@ -459,7 +459,7 @@ class _HomeState extends State<Home> {
       },
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: AppColors.of(context).primaryColor,
+          backgroundColor: AppColors.of(context).primaryDimColor,
           body: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -570,7 +570,7 @@ class _HomeState extends State<Home> {
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
                                           child: Card(
-                                            color: AppColors.of(context).primaryDimColor,
+                                            color: AppColors.of(context).primaryColor,
                                           ),
                                         ),
                                       ),
@@ -625,7 +625,7 @@ class _HomeState extends State<Home> {
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
                                           child: Card(
-                                            color: AppColors.of(context).primaryDimColor,
+                                            color: AppColors.of(context).primaryColor,
                                           ),
                                         ),
                                       ),
@@ -677,7 +677,7 @@ class _HomeState extends State<Home> {
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
                                           child: Card(
-                                            color: AppColors.of(context).primaryDimColor,
+                                            color: AppColors.of(context).primaryColor,
                                           ),
                                         ),
                                       ),
@@ -732,7 +732,7 @@ class _HomeState extends State<Home> {
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
                                         child: Card(
-                                          color: AppColors.of(context).primaryDimColor,
+                                          color: AppColors.of(context).primaryColor,
                                         ),
                                       ),
                                     ),
@@ -781,7 +781,7 @@ class _HomeState extends State<Home> {
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
                                         child:  Card(
-                                          color: AppColors.of(context).primaryDimColor,
+                                          color: AppColors.of(context).primaryColor,
                                         ),
                                       ),
                                     ),
@@ -830,7 +830,7 @@ class _HomeState extends State<Home> {
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
                                         child:  Card(
-                                          color: AppColors.of(context).primaryDimColor,
+                                          color: AppColors.of(context).primaryColor,
                                         ),
                                       ),
                                     ),
@@ -889,7 +889,7 @@ class _HomeState extends State<Home> {
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
                                           child: Card(
-                                            color: AppColors.of(context).primaryDimColor,
+                                            color: AppColors.of(context).primaryColor,
                                           ),
                                         ),
                                       ),
@@ -942,7 +942,7 @@ class _HomeState extends State<Home> {
                                         width: RouteManager.width / 1.04,
                                         height: RouteManager.width / 3,
                                         child:  Card(
-                                          color: AppColors.of(context).primaryDimColor,
+                                          color: AppColors.of(context).primaryColor,
                                         ),
                                       ),
                                     ),
@@ -986,11 +986,11 @@ class _HomeState extends State<Home> {
                                       context: context,
                                       builder: (cont) {
                                         return AlertDialog(
-                                          backgroundColor:AppColors.of(context).primaryDimColor,
+                                          backgroundColor:AppColors.of(context).primaryColor,
                                           content: Container(
                                             width: RouteManager.width,
                                             height: RouteManager.width / 2.5,
-                                            color: AppColors.of(context).primaryDimColor,
+                                            color: AppColors.of(context).primaryColor,
                                             child: Column(
                                               mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -1051,7 +1051,7 @@ class _HomeState extends State<Home> {
                                                                   .width /
                                                                   18,
                                                               color:
-                                                              AppColors.of(context).primaryDimColor,
+                                                              AppColors.of(context).primaryColor,
                                                               fontWeight:
                                                               FontWeight
                                                                   .bold,
@@ -1118,7 +1118,7 @@ class _HomeState extends State<Home> {
                                                                 RouteManager
                                                                     .width /
                                                                     18,
-                                                                color: AppColors.of(context).primaryDimColor,
+                                                                color: AppColors.of(context).primaryColor,
                                                                 fontWeight:
                                                                 FontWeight.bold,
                                                               ),
@@ -1144,7 +1144,7 @@ class _HomeState extends State<Home> {
                                           width: RouteManager.width / 1.04,
                                           height: RouteManager.width / 3,
                                           child:  Card(
-                                            color: AppColors.of(context).primaryDimColor,
+                                            color: AppColors.of(context).primaryColor,
                                           ),
                                         ),
                                       ),
