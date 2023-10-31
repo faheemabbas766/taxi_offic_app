@@ -433,7 +433,7 @@ class _DetailsPageState extends State<AddBookingScreen> {
                 enabledBorder: const OutlineInputBorder(),
                 focusedBorder: const OutlineInputBorder(),
                 labelText: "Select Date and Time",
-                hintStyle: TextStyle(),
+                hintStyle: const TextStyle(),
                 filled: true,
                 fillColor: AppColors.of(context).secondaryDimColor,
                 suffixIcon: const Icon(Icons.calendar_today),

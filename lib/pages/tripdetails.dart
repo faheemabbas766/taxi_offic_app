@@ -48,11 +48,11 @@ class _TripDetailsState extends State<TripDetails> {
       travelMode: TravelMode.driving,
     )
         .then((value) {
-      value.points.forEach((PointLatLng point) {
+      for (var point in value.points) {
         Provider.of<TripDetailsPro>(context, listen: false)
             .polylineCoordinates
             .add(LatLng(point.latitude, point.longitude));
-      });
+      }
     }).then((value) {
       Provider.of<TripDetailsPro>(context, listen: false).loaded = true;
       Provider.of<TripDetailsPro>(context, listen: false).addPolyLine();
@@ -175,8 +175,8 @@ class _TripDetailsState extends State<TripDetails> {
                         Marker(
                           markerId: const MarkerId('start'),
                           position: LatLng(
-                            pickupLatitude!,
-                            pickupLongitude!,
+                            pickupLatitude,
+                            pickupLongitude,
                           ),
                           icon: BitmapDescriptor.defaultMarker,
                         ),

@@ -111,7 +111,7 @@ class API {
       'password': pwd,
       'device_id': devid!,
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response = await request.send().timeout(const Duration(seconds: 25),
           onTimeout: () {
@@ -193,7 +193,7 @@ class API {
     request.fields.addAll({
       'id': userid.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
           await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
@@ -244,7 +244,7 @@ class API {
         return false;
       }
     } catch (e) {
-      print("ROLAAAAAAAAAAAAAAAAAAAAAA" + e.toString());
+      print("ROLAAAAAAAAAAAAAAAAAAAAAA$e");
       // Navigator.of(context, rootNavigator: true).pop();
       // ft.Fluttertoast.showToast(
       //   msg: "Sign In Unsuccessful",
@@ -267,7 +267,7 @@ class API {
       'token': Provider.of<HomePro>(context, listen: false).token,
     });
     request.fields.addAll({'id': userid.toString(), 'status': '2,11,9'});
-    var response;
+    http.StreamedResponse response;
     try {
       response = await request.send().timeout(
         const Duration(seconds: 25),
@@ -333,7 +333,7 @@ class API {
             Provider.of<CurrentJobsPro>(context, listen: false).jobs.add(jj);
           }
         }
-        print("RESPONSE IS : : : : : :" + res.toString());
+        print("RESPONSE IS : : : : : :$res");
         return true;
       } else {
         print(
@@ -361,10 +361,10 @@ class API {
       'id': userid.toString(),
       'status': 6.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
-          await request.send().timeout(Duration(seconds: 25), onTimeout: () {
+          await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
         throw "TimeOut";
       });
       var responsed = await http.Response.fromStream(response);
@@ -450,12 +450,12 @@ class API {
     });
     request.fields.addAll({
       'id': userid.toString(),
-      'status': 1.toString(),
+      'status': 12.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
-          await request.send().timeout(Duration(seconds: 25), onTimeout: () {
+          await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
         throw "TimeOut";
       });
       var responsed = await http.Response.fromStream(response);
@@ -524,7 +524,7 @@ class API {
         return false;
       }
     } catch (e) {
-      print("ROLAAAAAAAAAAAAAAAAAAAAAA" + e.toString());
+      print("ROLAAAAAAAAAAAAAAAAAAAAAA$e");
       return false;
     }
   }
@@ -540,10 +540,10 @@ class API {
       'Accept': 'application/json',
       'token': Provider.of<HomePro>(context, listen: false).token,
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
-          await request.send().timeout(Duration(seconds: 25), onTimeout: () {
+          await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
         throw "TimeOut";
       });
       print(
@@ -596,10 +596,10 @@ class API {
     request.fields.addAll({
       'id': userid.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
-          await request.send().timeout(Duration(seconds: 25), onTimeout: () {
+          await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
         throw "TimeOut";
       });
       var responsed = await http.Response.fromStream(response);
@@ -694,10 +694,10 @@ class API {
       'SHF_LATT': pos.latitude.toString(),
       'SHF_LANG': pos.longitude.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
-          await request.send().timeout(Duration(seconds: 25), onTimeout: () {
+          await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
         throw "TimeOut";
       });
       var responsed = await http.Response.fromStream(response);if (
@@ -794,7 +794,7 @@ class API {
       'SHF_LATT': pos.latitude.toString(),
       'SHF_LANG': pos.longitude.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response = await request.send().timeout(const Duration(seconds: 20),
           onTimeout: () {
@@ -844,16 +844,16 @@ class API {
       'Accept': 'application/json',
       'token': Provider.of<HomePro>(context, listen: false).token,
     });
-    print("DEV ID  IS : : : : : : : :" + devid.toString());
+    print("DEV ID  IS : : : : : : : :$devid");
     request.fields.addAll({
       'id': shiftid.toString(),
       'SHF_IN_USRID': userid.toString(),
       'SHF_TYPE': 2.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
-          await request.send().timeout(Duration(seconds: 25), onTimeout: () {
+          await request.send().timeout(const Duration(seconds: 25), onTimeout: () {
         throw "TimeOut";
       });
       var responsed = await http.Response.fromStream(response);
@@ -896,8 +896,8 @@ class API {
     }
   }
 
-  static Future<bool> respondToBooking(
-      int bookingid, int status, BuildContext context) async {
+  static Future<bool> respondToBooking(int bookingid,
+      int status, BuildContext context) async {
     var request = http.MultipartRequest(
       'POST',
       Uri.parse(
@@ -912,7 +912,7 @@ class API {
       'booking_id': bookingid.toString(),
       'status': status.toString(),
     });
-    var response;
+    http.StreamedResponse response;
     try {
       response =
           await request.send().timeout(const Duration(seconds: 25), onTimeout: () {

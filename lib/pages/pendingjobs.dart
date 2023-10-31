@@ -12,6 +12,8 @@ import 'home.dart';
 
 
 class PendingJobs extends StatefulWidget {
+  const PendingJobs({super.key});
+
   @override
   State<PendingJobs> createState() => _PendingJobsState();
 }
@@ -232,10 +234,10 @@ class _PendingJobsState extends State<PendingJobs> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Color(0xfffffae6),
+                              color: const Color(0xfffffae6),
                               borderRadius:
                               BorderRadius.circular(RouteManager.width / 40),
-                              border: Border.all(color: Color(0xffFFB900))),
+                              border: Border.all(color: const Color(0xffFFB900))),
                           padding: EdgeInsets.all(
                             RouteManager.width / 40,
                           ),
@@ -687,7 +689,7 @@ class _PendingJobsState extends State<PendingJobs> {
                                                     Provider.of<PendingJobsPro>(context, listen: false).jobs[index].dropaddress,
                                                     style: TextStyle(
                                                       fontWeight: FontWeight.bold,
-                                                      color: Color.fromARGB(255, 255, 120, 110),
+                                                      color: const Color.fromARGB(255, 255, 120, 110),
                                                       fontSize: RouteManager.width / 23,
                                                     ),
                                                     maxLines: 1,
@@ -711,7 +713,7 @@ class _PendingJobsState extends State<PendingJobs> {
                         );
                       }),
                 )
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }

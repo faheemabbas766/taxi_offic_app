@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:taxi_app/pages/pendingjobs.dart';
 import 'package:taxi_app/providers/themepro.dart';
@@ -9,15 +8,17 @@ import 'completedjobs.dart';
 import 'currentjobs.dart';
 
 class JobView extends StatefulWidget {
+  const JobView({super.key});
+
   @override
   State<JobView> createState() => _JobViewState();
 }
 
 class _JobViewState extends State<JobView> {
   final tabs = [
-    CurrentJobs(),
-    PendingJobs(),
-    CompletedJobs(),
+    const CurrentJobs(),
+    const PendingJobs(),
+    const CompletedJobs(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -83,9 +84,9 @@ class _JobViewState extends State<JobView> {
               unselectedIconTheme: const IconThemeData(opacity: 0.7),
               selectedIconTheme: const IconThemeData(opacity: 1),
               // fixedColor: Colors.white,
-              unselectedItemColor: Color(0xff5E5F60),
+              unselectedItemColor: const Color(0xff5E5F60),
               unselectedFontSize: RouteManager.width / 30,
-              selectedItemColor: Color(0xffFBC02D),
+              selectedItemColor: const Color(0xffFBC02D),
               currentIndex: Provider.of<BottomNavigationPro>(context).navindex,
               onTap: (value) {
                 Provider.of<BottomNavigationPro>(context, listen: false)

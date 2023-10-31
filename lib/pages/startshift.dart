@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:taxi_app/providers/homepro.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;
@@ -9,6 +9,8 @@ import '../providers/startshiftpro.dart';
 import '../providers/themepro.dart';
 
 class StartShift extends StatefulWidget {
+  const StartShift({super.key});
+
   @override
   State<StartShift> createState() => _StartShiftState();
 }
@@ -20,6 +22,35 @@ class _StartShiftState extends State<StartShift> {
     API.getVehicles(
         Provider.of<HomePro>(context, listen: false).userid, context);
   }
+  Future<bool> _handleLocationPermission(BuildContext context) async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Location services are disabled. Please enable the services')));
+      return false;
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Location permissions are denied')));
+        return false;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Location permissions are permanently denied, we cannot request permissions.')));
+      return false;
+    }
+    return true;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -296,7 +327,7 @@ class _StartShiftState extends State<StartShift> {
                         ),
                       ),
                       SizedBox(height: RouteManager.width / 28),
-                      Container(
+                      SizedBox(
                         height: RouteManager.height / 1.9,
                         child: ListView.builder(
                           itemCount: Provider.of<StartShiftPro>(context)
@@ -515,7 +546,8 @@ class _StartShiftState extends State<StartShift> {
                         ),
                       ),
                       InkWell(
-                        onTap: () {
+                        onTap: () async {
+                          await _handleLocationPermission(context);
                           if (Provider.of<StartShiftPro>(context, listen: false)
                                   .selectedvehicleid ==
                               -1) {

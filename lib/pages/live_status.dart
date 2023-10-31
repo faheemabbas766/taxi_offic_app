@@ -57,7 +57,8 @@ class _ShowDialogScreenState extends State<ShowDialogScreen> {
     return SafeArea(
         child:Scaffold(
           backgroundColor: AppColors.of(context).primaryDimColor,
-          body:Padding(
+          body:list==null? const Center(child: CircularProgressIndicator(),)
+              :Padding(
             padding: const EdgeInsets.only(top: 40),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -408,8 +409,8 @@ class _ShowDialogScreenState extends State<ShowDialogScreen> {
                                     }
                                     Provider.of<CurrentJobsPro>(context, listen: false).notifyListenerz();
                                   }
-                                  await getMyCurrentJobs();
                                   await fetchData();
+                                  await getMyCurrentJobs();
                                   isLoading = false;
                                   setState(() {
                                   });

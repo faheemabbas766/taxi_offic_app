@@ -10,7 +10,6 @@ import '../pages/live_status.dart';
 import '../pages/pobmap.dart';
 import '../pages/splashscreen.dart';
 import '../pages/startshift.dart';
-import '../pages/tripdetails.dart';
 
 class RouteManager {
   static Color appclr = const Color.fromARGB(255, 240, 240, 240);
@@ -33,23 +32,23 @@ class RouteManager {
       case signinpage:
         return MaterialPageRoute(builder: (context) => SignIn());
       case rootpage:
-        return MaterialPageRoute(builder: (context) => SplashScreen());
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
       case bottomPage:
-        return MaterialPageRoute(builder: (context) => BottomBar());
+        return MaterialPageRoute(builder: (context) => const BottomBar());
       case homepage:
-        return MaterialPageRoute(builder: (context) => Home());
+        return MaterialPageRoute(builder: (context) => const Home());
       case jobviewpage:
-        return MaterialPageRoute(builder: (context) => JobView());
+        return MaterialPageRoute(builder: (context) => const JobView());
       case startshiftpage:
-        return MaterialPageRoute(builder: (context) => StartShift());
+        return MaterialPageRoute(builder: (context) => const StartShift());
       case tripdetailspage:
-        return MaterialPageRoute(builder: (context) => TripDetails());
+        return MaterialPageRoute(builder: (context) => const TripDetails());
       case pobmappage:
-        return MaterialPageRoute(builder: (context) => PobMap());
+        return MaterialPageRoute(builder: (context) => const PobMap());
       case addBooking:
-        return MaterialPageRoute(builder: (context) => AddBookingScreen());
+        return MaterialPageRoute(builder: (context) => const AddBookingScreen());
       case liveStatus:
-        return MaterialPageRoute(builder: (context) => ShowDialogScreen());
+        return MaterialPageRoute(builder: (context) => const ShowDialogScreen());
       default:
         throw const FormatException("Route no Found!");
     }

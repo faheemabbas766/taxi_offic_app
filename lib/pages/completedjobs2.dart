@@ -1,19 +1,15 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:taxi_app/providers/completedjobspro.dart';
 
 import '../Api & Routes/api.dart';
 import '../Api & Routes/routes.dart';
-import '../providers/bottomnavpro.dart';
 import '../providers/homepro.dart';
 
 
 class CompletedJobs extends StatefulWidget {
+  const CompletedJobs({super.key});
+
   @override
   State<CompletedJobs> createState() => _CompletedJobsState();
 }
@@ -45,7 +41,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(55, 61, 76, 1),
+      backgroundColor: const Color.fromRGBO(55, 61, 76, 1),
       body: Provider.of<CompletedJobsPro>(context).isloaded
           ? Provider.of<CompletedJobsPro>(context).jobs.isEmpty
               ? Center(
@@ -79,7 +75,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                           "Tap Here to Refresh",
                           style: TextStyle(
                             fontSize: RouteManager.width / 18,
-                            color: Color.fromARGB(255, 156, 205, 218),
+                            color: const Color.fromARGB(255, 156, 205, 218),
                           ),
                         ),
                       ),
@@ -95,7 +91,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                         return InkWell(
                           onTap: () {},
                           child: Card(
-                            color: Color.fromARGB(108, 34, 193, 233),
+                            color: const Color.fromARGB(108, 34, 193, 233),
                             child: Column(
                               children: [
                                 // Container(
@@ -156,7 +152,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                     SizedBox(width: RouteManager.width / 30),
                                     Icon(
                                       Icons.location_on,
-                                      color: Color.fromARGB(255, 123, 247, 127),
+                                      color: const Color.fromARGB(255, 123, 247, 127),
                                       size: RouteManager.width / 16,
                                     ),
                                     Text(
@@ -175,7 +171,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                 Row(
                                   children: [
                                     SizedBox(width: RouteManager.width / 10),
-                                    Container(
+                                    SizedBox(
                                       width: RouteManager.width / 1.3,
                                       child: Text(
                                         Provider.of<CompletedJobsPro>(context, listen: false).jobs[index].pickupadress,
@@ -196,14 +192,14 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                     SizedBox(width: RouteManager.width / 30),
                                     Icon(
                                       Icons.location_on,
-                                      color: Color.fromARGB(255, 255, 120, 110),
+                                      color: const Color.fromARGB(255, 255, 120, 110),
                                       size: RouteManager.width / 16,
                                     ),
                                     Text(
                                       "Destination : ",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        color: Color.fromARGB(255, 255, 120, 110),
+                                        color: const Color.fromARGB(255, 255, 120, 110),
                                         fontSize: RouteManager.width / 23,
                                       ),
                                     ),
@@ -215,7 +211,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                 Row(
                                   children: [
                                     SizedBox(width: RouteManager.width / 10),
-                                    Container(
+                                    SizedBox(
                                       width: RouteManager.width / 1.3,
                                       child: Text(
                                         Provider.of<CompletedJobsPro>(context, listen: false).jobs[index].dropaddress,
@@ -316,7 +312,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                                       //     : jsonDecode(message.notification!.body!)["booking_detail"]["BM_PAY_METHOD"] == 2
                                       //         ? "Card"
                                       //         : "Account",
-                                      Provider.of<CompletedJobsPro>(context).jobs[index].total_amount.toString() + " \$",
+                                      "${Provider.of<CompletedJobsPro>(context).jobs[index].total_amount} \$",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: RouteManager.width / 25,
@@ -330,7 +326,7 @@ class _CompletedJobsState extends State<CompletedJobs> {
                         );
                       }),
                 )
-          : Center(child: CircularProgressIndicator()),
+          : const Center(child: CircularProgressIndicator()),
     );
   }
 }

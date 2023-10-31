@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,6 +9,8 @@ import '../providers/homepro.dart';
 import '../providers/signinpro.dart';
 
 class SignIn extends StatefulWidget {
+  const SignIn({super.key});
+
   @override
   State<SignIn> createState() => _SignInState();
 }
@@ -147,7 +148,7 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
                             hintText: "Enter Password",
-                            hintStyle: TextStyle(color: Colors.grey),
+                            hintStyle: const TextStyle(color: Colors.grey),
                             prefixIcon: const Icon(Icons.lock_open,
                                 color: Color(0xfffebd23)),
                             suffixIcon: IconButton(

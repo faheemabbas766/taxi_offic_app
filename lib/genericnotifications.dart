@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -45,7 +44,7 @@ class GenericNotifications {
               context: RouteManager.context!,
               builder: (cont) {
                 return Dialog(
-                  backgroundColor: Color.fromRGBO(101, 106, 121, 1),
+                  backgroundColor: const Color.fromRGBO(101, 106, 121, 1),
                   child: Container(
                       decoration: const BoxDecoration(
                         color: Color.fromRGBO(101, 106, 121, 1),
@@ -54,7 +53,7 @@ class GenericNotifications {
                         ),
                       ),
                       height: RouteManager.width / 3,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           Center(
@@ -74,7 +73,7 @@ class GenericNotifications {
                             onPressed: () {
                               Navigator.of(cont, rootNavigator: true).pop();
                             },
-                            child: Container(
+                            child: SizedBox(
                               width: RouteManager.width / 5,
                               height: RouteManager.width / 8,
                               child: Center(
@@ -250,7 +249,7 @@ class GenericNotifications {
                                         } else {
                                           title = "Stop $index";
                                           stopColor = Colors.black;
-                                          navigationColor = Color(0xff0038FF);
+                                          navigationColor = const Color(0xff0038FF);
                                           // Set the navigation button color for intermediate stops
                                         }
                                         return ListTile(
@@ -309,10 +308,10 @@ class GenericNotifications {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                            color: Color(0xfffffae6),
+                            color: const Color(0xfffffae6),
                             borderRadius:
                             BorderRadius.circular(RouteManager.width / 40),
-                            border: Border.all(color: Color(0xffFFB900))),
+                            border: Border.all(color: const Color(0xffFFB900))),
                         padding: EdgeInsets.all(
                           RouteManager.width / 40,
                         ),
@@ -453,7 +452,7 @@ class GenericNotifications {
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xffFFB900)),
+                                backgroundColor: const Color(0xffFFB900)),
                             onPressed: () {
                               FlutterRingtonePlayer.stop();
                               API.showLoading("", cont);

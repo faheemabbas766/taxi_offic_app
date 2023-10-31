@@ -24,7 +24,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
   Future<void> fetchData() async {
     await getMyCurrentJobs();
     if( Provider.of<CurrentJobsPro>(context, listen: false).jobs.isNotEmpty){
-      Navigator.push(context, MaterialPageRoute(builder: (context) => ShowDialogScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const ShowDialogScreen()));
     }
 }
   Future<void> getMyCurrentJobs() async {
@@ -107,7 +107,7 @@ class _CurrentJobsState extends State<CurrentJobs> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowDialogScreen()),
+                  MaterialPageRoute(builder: (context) => const ShowDialogScreen()),
                 );
               },
               child: Column(

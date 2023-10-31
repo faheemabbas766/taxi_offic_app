@@ -1,9 +1,4 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:taxi_app/providers/completedjobspro.dart';
@@ -13,8 +8,6 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../Api & Routes/api.dart';
 import '../Api & Routes/routes.dart';
-import '../providers/bottomnavpro.dart';
-import '../providers/currentjobspro.dart';
 import '../providers/homepro.dart';
 
 

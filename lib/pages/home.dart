@@ -256,10 +256,10 @@ class _HomeState extends State<Home> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: Color(0xfffffae6),
+                              color: const Color(0xfffffae6),
                               borderRadius: BorderRadius.circular(
                                   RouteManager.width / 40),
-                              border: Border.all(color: Color(0xffFFB900))),
+                              border: Border.all(color: const Color(0xffFFB900))),
                           padding: EdgeInsets.all(
                             RouteManager.width / 40,
                           ),
@@ -401,7 +401,7 @@ class _HomeState extends State<Home> {
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xffFFB900)),
+                                  backgroundColor: const Color(0xffFFB900)),
                               onPressed: () {
                                 FlutterRingtonePlayer.stop();
                                 API.showLoading("", cont);
@@ -465,6 +465,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(height: 50,),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
@@ -476,7 +477,7 @@ class _HomeState extends State<Home> {
                             width: RouteManager.width / 1,
                             height: RouteManager.width / 3,
                             child: Card(
-                              color: const Color(0xfffebd23),
+                              color: AppColors.of(context).accentColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               ),
@@ -1190,7 +1191,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                Image.asset("assets/caradd.png"),
+                // Image.asset("assets/caradd.png"),
               ],
             ),
           ),

@@ -218,7 +218,7 @@ void main() async {
                             RouteManager.width / 23,
                           ),
                         ),
-                        border: Border.all(color: Color(0xffFFB900))),
+                        border: Border.all(color: const Color(0xffFFB900))),
                     padding: EdgeInsets.all(RouteManager.width / 70),
                     child: Stack(
                       children: [
@@ -335,7 +335,7 @@ void main() async {
                                     } else {
                                       title = "Stop $index";
                                       stopColor = Colors.black;
-                                      navigationColor = Color(0xff0038FF);
+                                      navigationColor = const Color(0xff0038FF);
                                       // Set the navigation button color for intermediate stops
                                     }
                                     return ListTile(
@@ -394,10 +394,10 @@ void main() async {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: Color(0xfffffae6),
+                        color: const Color(0xfffffae6),
                         borderRadius:
                             BorderRadius.circular(RouteManager.width / 40),
-                        border: Border.all(color: Color(0xffFFB900))),
+                        border: Border.all(color: const Color(0xffFFB900))),
                     padding: EdgeInsets.all(
                       RouteManager.width / 40,
                     ),
@@ -538,7 +538,7 @@ void main() async {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(0xffFFB900)),
+                            backgroundColor: const Color(0xffFFB900)),
                         onPressed: () {
                           FlutterRingtonePlayer.stop();
                           API.showLoading("", cont);

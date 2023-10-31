@@ -16,7 +16,7 @@ class PobMapPro with ChangeNotifier {
   double? plong;
   double? dlat;
   double? dlong;
-  CameraPosition? initialcampos = null;
+  CameraPosition? initialcampos;
   Set<Marker> markers = {};
   PolylinePoints polylinePoints = PolylinePoints();
   Map<PolylineId, Polyline> polylines = {};
@@ -24,7 +24,7 @@ class PobMapPro with ChangeNotifier {
   bool loaded = false;
 
   addPolyLine() {
-    PolylineId id = PolylineId("poly");
+    PolylineId id = const PolylineId("poly");
     Polyline polyline = Polyline(polylineId: id, color: Colors.blue, points: polylineCoordinates);
     polylines[id] = polyline;
   }

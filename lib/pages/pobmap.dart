@@ -12,6 +12,8 @@ import '../providers/pobmappro.dart';
 // }
 
 class PobMap extends StatefulWidget {
+  const PobMap({super.key});
+
   @override
   State<PobMap> createState() => _PobMapState();
 }
@@ -49,11 +51,11 @@ class _PobMapState extends State<PobMap> {
           travelMode: TravelMode.driving,
         )
         .then((value) {
-      value.points.forEach((PointLatLng point) {
+      for (var point in value.points) {
         Provider.of<PobMapPro>(context, listen: false)
             .polylineCoordinates
             .add(LatLng(point.latitude, point.longitude));
-      });
+      }
     }).then((value) {
       Provider.of<PobMapPro>(context, listen: false).loaded = true;
       Provider.of<PobMapPro>(context, listen: false).addPolyLine();
@@ -85,8 +87,7 @@ class _PobMapState extends State<PobMap> {
                     SizedBox(
                       width: RouteManager.width / 1.12,
                       child: Text(
-                        Provider.of<PobMapPro>(context).pickupaddress! +
-                            "asdkakdaksdjaksjdkadaksjhdkjakdjsadsakdsajkajsdkjadak akshd sakd k",
+                        "${Provider.of<PobMapPro>(context).pickupaddress!}asdkakdaksdjaksjdkadaksjhdkjakdjsadsakdsajkajsdkjadak akshd sakd k",
                         style: TextStyle(
                             color: const Color.fromARGB(255, 54, 226, 60),
                             fontWeight: FontWeight.bold,
@@ -120,7 +121,7 @@ class _PobMapState extends State<PobMap> {
                   ],
                 ),
                 SizedBox(height: RouteManager.width / 40),
-                Container(
+                SizedBox(
                   // color: Colors.red,
                   height: RouteManager.height / 1.19,
                   child: Stack(

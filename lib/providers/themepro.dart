@@ -20,7 +20,7 @@ class AppColors {
   Color get secondaryColor => themeMode == ThemeMode.light ? Colors.white : Colors.black;
   Color get primaryDimColor => themeMode == ThemeMode.light ? Colors.black87 : Colors.white12;
   Color get secondaryDimColor => themeMode == ThemeMode.light ? Colors.white70 : Colors.black12;
-  Color get accentColor =>  Colors.amber;
+  Color get accentColor =>  Colors.red;
 
 
   static AppColors of(BuildContext context) {
