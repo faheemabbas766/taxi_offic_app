@@ -460,7 +460,7 @@ class GenericNotifications {
                                   .respondToBooking(
                                   jsonDecode(
                                       n.payload.toString())["BM_SN"],
-                                  3,
+                                  7,
                                   cont)
                                   .then(
                                     (value) {

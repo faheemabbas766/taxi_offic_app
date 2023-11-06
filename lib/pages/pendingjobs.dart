@@ -372,7 +372,7 @@ class _PendingJobsState extends State<PendingJobs> {
                                   listen: false)
                                   .jobs[index]
                                   .bookid,
-                              3,
+                              7,
                               cont)
                               .then((value) {
                             if (value) {
@@ -486,7 +486,7 @@ class _PendingJobsState extends State<PendingJobs> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "No Pending Jobs",
+                        "No Future Jobs",
                         style: TextStyle(
                           fontSize: RouteManager.width / 20,
                           color: AppColors.of(context).secondaryColor,

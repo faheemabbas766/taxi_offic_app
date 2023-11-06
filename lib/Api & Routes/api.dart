@@ -266,7 +266,7 @@ class API {
       'Accept': 'application/json',
       'token': Provider.of<HomePro>(context, listen: false).token,
     });
-    request.fields.addAll({'id': userid.toString(), 'status': '2,11,9'});
+    request.fields.addAll({'id': userid.toString(), 'status': '2,9,11'});
     http.StreamedResponse response;
     try {
       response = await request.send().timeout(
@@ -505,12 +505,12 @@ class API {
                       ),
                       i["BM_PICKUP_NOTE"] ?? "Default Pickup Note",
                       i["BM_DROP_NOTE"] ?? "Default Drop Note",
-                      double.parse(i["BM_PLAT"]),
-                      double.parse(i["BM_PLANG"]),
-                      double.parse(i["BM_DLAT"]),
-                      double.parse(i["BM_DLANG"]),
-                      i["BM_DISTANCE"].toString(),
-                      i["BM_DISTANCE_TIMe"].toString()),
+                      double.parse(i["BM_PLAT"]?? 0),
+                      double.parse(i["BM_PLANG"]?? 0),
+                      double.parse(i["BM_DLAT"]?? 0),
+                      double.parse(i["BM_DLANG"]?? 0),
+                      i["BM_DISTANCE"].toString()?? '',
+                      i["BM_DISTANCE_TIMe"].toString()?? ''),
                 );
           }
         }

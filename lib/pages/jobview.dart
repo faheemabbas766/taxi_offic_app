@@ -64,7 +64,7 @@ class _JobViewState extends State<JobView> {
                       return pendingjobicon;
                     },
                   ),
-                  label: "Pending Job",
+                  label: "Future Job",
                   activeIcon: const Icon(Icons.info, color: Color(0xffFBC02D)),
                 ),
                 BottomNavigationBarItem(
